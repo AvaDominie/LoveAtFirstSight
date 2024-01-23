@@ -21,4 +21,6 @@ public class Animal
     [Required]
     public string UrlPic { get; set; }
     public List<AnimalBreed> AnimalBreeds { get; set; }
+    public List<Adopted> Adoptions { get; set; }
 }
+

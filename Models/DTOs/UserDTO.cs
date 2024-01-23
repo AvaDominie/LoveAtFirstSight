@@ -12,6 +12,8 @@ public class UserDTO
     public string Email { get; set; }
     [Required]
     public string Address { get; set; }
+    [Required]
     public bool Employee { get; set; }
     public IdentityUser IdentityUser { get; set; }
+    public List<AdoptedDTO> Adoptions { get; set; }
 }
