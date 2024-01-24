@@ -4,6 +4,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Home from "./Home";
 import Dogs from "./animals/Dogs";
+import Cats from "./animals/Cats";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -30,7 +31,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     path="cats"
                     element={
                         <AuthorizedRoute loggedInUser={loggedInUser}>
-
+                            <Cats />
                         </AuthorizedRoute>
                     }
                 />

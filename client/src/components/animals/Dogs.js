@@ -1,6 +1,6 @@
 
 import DogList from "./DogList";
-import AnimalDetails from "./AnimalDetails";
+
 
 
 export default function Dogs() {
