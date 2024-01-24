@@ -13,7 +13,6 @@ public class AdoptedDTO
     public AnimalDTO Animal { get; set; }
     [Required]
     public int UserId { get; set; }
-    public UserDTO User { get; set; }
-    [Required]
+    public UserProfileDTO UserProfile { get; set; }
     public DateTime TimeOfAdoption { get; set; }
 }

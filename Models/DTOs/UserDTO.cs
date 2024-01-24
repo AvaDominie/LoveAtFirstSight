@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace LoveAtFirstSight.Models.DTOs;
 
-public class UserDTO
+public class UserProfileDTO
 {
     public int Id { get; set; }
     [Required]
@@ -13,7 +13,12 @@ public class UserDTO
     [Required]
     public string Address { get; set; }
     [Required]
+    public string UserName { get; set; }
+    public List<string> Roles { get; set; }
+    [Required]
     public bool Employee { get; set; }
+    [Required]
+    public string IdentityUserId { get; set; }
     public IdentityUser IdentityUser { get; set; }
     public List<AdoptedDTO> Adoptions { get; set; }
 }

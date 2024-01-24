@@ -9,6 +9,8 @@ public class Animal
     [Required]
     public bool IsDog { get; set; }
     [Required]
+    public bool IsMale { get; set; }
+    [Required]
     public string Name { get; set; }
     [Required]
     public int Age { get; set; }

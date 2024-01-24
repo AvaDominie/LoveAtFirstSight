@@ -27,7 +27,9 @@ return (
         <>
             <NavbarToggler onClick={toggleNavbar} />
             <Collapse isOpen={open} navbar>
-            <Nav navbar></Nav>
+            <Nav navbar>
+                
+            </Nav>
             </Collapse>
             <Button
             color="primary"
