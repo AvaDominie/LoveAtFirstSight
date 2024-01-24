@@ -3,6 +3,7 @@ import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Home from "./Home";
+import Dogs from "./animals/Dogs";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -18,18 +19,26 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     }
                 />
                 <Route
-                    path="userProfiles"
+                    path="dogs"
                     element={
                         <AuthorizedRoute loggedInUser={loggedInUser}>
-                            
+                            <Dogs />
                         </AuthorizedRoute>
                     }
                 />
                 <Route
-                    path="chores"
+                    path="cats"
                     element={
                         <AuthorizedRoute loggedInUser={loggedInUser}>
-                            
+
+                        </AuthorizedRoute>
+                    }
+                />
+                <Route
+                    path="profile"
+                    element={
+                        <AuthorizedRoute loggedInUser={loggedInUser}>
+
                         </AuthorizedRoute>
                     }
                 />
