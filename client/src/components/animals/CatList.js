@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getCats, getFosteredCats } from "../../managers/AnimalManager";
+import "./Animal.css"
 
 export default function CatList() {
     const [Cats, setCats] = useState([]);
@@ -18,6 +19,7 @@ export default function CatList() {
 
     const handleButtonClick = () => {
         setDisplayFostered(!displayFostered);
+        document.getElementById("fostered").classList.toggle("clicked");
     };
 
 
@@ -33,7 +35,7 @@ export default function CatList() {
 
     console.log("All Fostered Cats", filteredFostered)
 
-    
+
     return (
         <>
             <h2>Available Cats</h2>

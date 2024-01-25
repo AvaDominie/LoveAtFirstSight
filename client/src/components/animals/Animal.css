@@ -1,0 +1,12 @@
+
+#fostered {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#fostered.clicked {
+    background-color: red;
+}

@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { getDogs, getFosteredDogs } from "../../managers/AnimalManager";
+import "./Animal.css"
+
 
 export default function DogList() {
     const [dogs, setDogs] = useState([]);
-    const [filteredFostered, setFilteredFostered] = useState([])
+    const [filteredFostered, setFilteredFostered] = useState([]);
     const [displayFostered, setDisplayFostered] = useState(false);
-
-
 
     const getAllDogs = () => {
         getDogs().then(setDogs);
@@ -18,8 +18,8 @@ export default function DogList() {
 
     const handleButtonClick = () => {
         setDisplayFostered(!displayFostered);
+        document.getElementById("fostered").classList.toggle("clicked");
     };
-
 
     useEffect(() => {
         getAllDogs();
@@ -29,11 +29,9 @@ export default function DogList() {
         getFosterDogs();
     }, []);
 
-    console.log("All Avalible dogs", dogs)
+    console.log("All Available dogs", dogs);
+    console.log("All Fostered dogs", filteredFostered);
 
-    console.log("All Fostered dogs", filteredFostered)
-
-    
     return (
         <>
             <h2>Available Dogs</h2>
@@ -56,7 +54,6 @@ export default function DogList() {
         </>
     );
 }
-
 
 
 
