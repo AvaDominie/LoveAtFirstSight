@@ -12,7 +12,9 @@ export const getCats = () => {
     return fetch(`${_apiUrl}/allCats`).then((res) => res.json());
 };
 
-
+export const getFosteredDogs = () => {
+    return fetch(`${_apiUrl}/allFosteredDogs`).then((res) => res.json());
+};
 
 
 

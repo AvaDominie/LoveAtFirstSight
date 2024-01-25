@@ -21,12 +21,3 @@ export default function Dogs() {
 
 
 
-
-{/* <Route
-path="cats"
-element={
-    <AuthorizedRoute loggedInUser={loggedInUser}>
-        
-    </AuthorizedRoute>
-}
-/> */}
