@@ -1,23 +1,54 @@
 import { useState, useEffect } from "react";
-import { getCats } from "../../managers/AnimalManager";
+import { getCats, getFosteredCats } from "../../managers/AnimalManager";
 
 export default function CatList() {
-    const [cats, setCats] = useState([]);
+    const [Cats, setCats] = useState([]);
+    const [filteredFostered, setFilteredFostered] = useState([])
+    const [displayFostered, setDisplayFostered] = useState(false);
+
+
 
     const getAllCats = () => {
         getCats().then(setCats);
     };
 
+    const getFosterCats = () => {
+        getFosteredCats().then(setFilteredFostered);
+    };
+
+    const handleButtonClick = () => {
+        setDisplayFostered(!displayFostered);
+    };
+
+
     useEffect(() => {
         getAllCats();
     }, []);
 
-    console.log(cats)
+    useEffect(() => {
+        getFosterCats();
+    }, []);
+
+    console.log("All Avalible Cats", Cats)
+
+    console.log("All Fostered Cats", filteredFostered)
+
+    
     return (
         <>
-            <h2>Cats</h2>
-            {cats.map((cat) => (
-                <div key={cat.Id}>
+            <h2>Available Cats</h2>
+            <div>
+                <button id="fostered" onClick={handleButtonClick}>
+                    Fostered
+                </button>
+            </div>
+            {displayFostered ? filteredFostered.map((cat) => (
+                <div key={cat.id}>
+                    <p>{cat.name}</p>
+                    <img className="cat-picture" src={cat.urlPic} alt={cat.name} />
+                </div>
+            )) : Cats.map((cat) => (
+                <div key={cat.id}>
                     <p>{cat.name}</p>
                     <img className="cat-picture" src={cat.urlPic} alt={cat.name} />
                 </div>
@@ -25,3 +56,4 @@ export default function CatList() {
         </>
     );
 }
+

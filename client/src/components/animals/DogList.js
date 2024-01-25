@@ -33,8 +33,7 @@ export default function DogList() {
 
     console.log("All Fostered dogs", filteredFostered)
 
-
-    console.log(dogs)
+    
     return (
         <>
             <h2>Available Dogs</h2>

@@ -16,7 +16,9 @@ export const getFosteredDogs = () => {
     return fetch(`${_apiUrl}/allFosteredDogs`).then((res) => res.json());
 };
 
-
+export const getFosteredCats = () => {
+    return fetch(`${_apiUrl}/allFosteredCats`).then((res) => res.json());
+};
 
 
 

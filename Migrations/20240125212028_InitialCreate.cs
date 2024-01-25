@@ -275,7 +275,8 @@ namespace LoveAtFirstSight.Migrations
                     { 2, 1, true, new DateTime(2023, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, true, "Baron", "https://i.pinimg.com/736x/2c/52/e9/2c52e9e6ecb5d8fd9d3b6426c6a22684.jpg" },
                     { 3, 2, false, new DateTime(2023, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), false, true, true, "Lynyrd", "https://i.pinimg.com/736x/ce/b9/78/ceb9786a73f06208c1fbb76d91e94cc1.jpg" },
                     { 4, 1, true, new DateTime(2023, 12, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false, false, "Storm", "https://i.pinimg.com/736x/aa/ff/48/aaff4805200a41a4caa46a222b16d51c.jpg" },
-                    { 5, 2, false, new DateTime(2023, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false, false, "Elena", "https://i.pinimg.com/736x/39/55/fb/3955fb5e4a3168fae68c51696ee94f1e.jpg" }
+                    { 5, 2, false, new DateTime(2023, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false, false, "Elena", "https://i.pinimg.com/736x/39/55/fb/3955fb5e4a3168fae68c51696ee94f1e.jpg" },
+                    { 6, 1, false, new DateTime(2023, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, false, "Cloud", "https://i.pinimg.com/736x/28/8b/fa/288bfa66c76c39834fc3c6f53b5ccb02.jpg" }
                 });
 
             migrationBuilder.InsertData(
@@ -292,9 +293,9 @@ namespace LoveAtFirstSight.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "5678efgh-0829-4ac5-a3ed-180f5e916a5f", 0, "9b3d04ab-7378-49d2-8845-8b29095b918f", "rachelmdominie@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEKoYWM39to9b2DSPWEQegaLtH0qRR762OD9OrMxZFZKwHD5eCELZNI2NCC4hnwQbqg==", null, false, "81dd0aa2-4f99-4703-9968-805a62e356df", false, "RachelD" },
-                    { "9012ijkl-0829-4ac5-a3ed-180f5e916a5f", 0, "04e7f8c0-728e-4051-ab2e-eb8581465429", "elizabethspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEIAKIyEKfA/CR9VUe9lUVa+8edFXTnUBIGqt+KLEu3huDRmnZJEcuedIFxs9WscemA==", null, false, "aa045d92-fb13-4990-9b23-4f46c10e45f6", false, "ElizabethS" },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "369dd695-1e0a-4633-96bd-5134abcfa31f", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEIcJ6ymtdSxX0RG6QkL6qc+lHG4pQbIx4RgCO0KYzn1gcmMsSAo3C9URaVtfsOua9Q==", null, false, "e4ec9083-e574-438f-9865-6f30ddf94539", false, "Administrator" }
+                    { "5678efgh-0829-4ac5-a3ed-180f5e916a5f", 0, "47443f0e-7c25-48f7-8f3d-6fdba978ff7f", "rachelmdominie@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEJoN84SiAhP4icbQWN+hyHh2zVlLoljcv7EhUIF4kDrj5W+mXN6I17VN7aQJmNFttg==", null, false, "c9fe48f7-41e6-4bbd-a567-952770f1d0f7", false, "RachelD" },
+                    { "9012ijkl-0829-4ac5-a3ed-180f5e916a5f", 0, "77ad9c9f-9a4b-4307-a9ec-0b8e9ce2509e", "elizabethspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAENCtz0rbZhRscQ6/sKpUr9eKcm5Mpxqw0YbjUyxnPh2q+OZDXGOU9DqBCN5UdKLBZw==", null, false, "a39794ff-d0d2-41ff-9a0b-f17f85b42a78", false, "ElizabethS" },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "1457d752-24c7-42e6-9189-58964fad3057", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEGAc564fCdQMnZNhCKN+eNHjLmVUgLXO5PG40UvKSGs2pbDCIdUkfcJZNSICuO95oA==", null, false, "d4ca1e3d-2458-4e3c-a9cb-b10952027d56", false, "Administrator" }
                 });
 
             migrationBuilder.InsertData(
@@ -341,7 +342,8 @@ namespace LoveAtFirstSight.Migrations
                     { 7, 4, 12 },
                     { 8, 4, 13 },
                     { 9, 5, 14 },
-                    { 10, 5, 15 }
+                    { 10, 5, 15 },
+                    { 11, 6, 12 }
                 });
 
             migrationBuilder.InsertData(
@@ -371,7 +373,8 @@ namespace LoveAtFirstSight.Migrations
                 {
                     { 1, 3, false, new DateTime(2023, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 },
                     { 2, 2, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 },
-                    { 3, 5, false, new DateTime(2023, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 3 }
+                    { 3, 5, false, new DateTime(2023, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 3 },
+                    { 4, 6, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 }
                 });
 
             migrationBuilder.CreateIndex(

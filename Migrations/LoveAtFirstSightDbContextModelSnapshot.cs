@@ -74,6 +74,14 @@ namespace LoveAtFirstSight.Migrations
                             Foster = false,
                             TimeOfAdoption = new DateTime(2023, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UserProfileId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AnimalId = 6,
+                            Foster = true,
+                            TimeOfAdoption = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UserProfileId = 2
                         });
                 });
 
@@ -175,6 +183,18 @@ namespace LoveAtFirstSight.Migrations
                             IsMale = false,
                             Name = "Elena",
                             UrlPic = "https://i.pinimg.com/736x/39/55/fb/3955fb5e4a3168fae68c51696ee94f1e.jpg"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Age = 1,
+                            Available = false,
+                            DateAdded = new DateTime(2023, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Fostered = true,
+                            IsDog = false,
+                            IsMale = false,
+                            Name = "Cloud",
+                            UrlPic = "https://i.pinimg.com/736x/28/8b/fa/288bfa66c76c39834fc3c6f53b5ccb02.jpg"
                         });
                 });
 
@@ -260,6 +280,12 @@ namespace LoveAtFirstSight.Migrations
                             Id = 10,
                             AnimalId = 5,
                             BreedId = 15
+                        },
+                        new
+                        {
+                            Id = 11,
+                            AnimalId = 6,
+                            BreedId = 12
                         });
                 });
 
@@ -600,13 +626,13 @@ namespace LoveAtFirstSight.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "369dd695-1e0a-4633-96bd-5134abcfa31f",
+                            ConcurrencyStamp = "1457d752-24c7-42e6-9189-58964fad3057",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEIcJ6ymtdSxX0RG6QkL6qc+lHG4pQbIx4RgCO0KYzn1gcmMsSAo3C9URaVtfsOua9Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGAc564fCdQMnZNhCKN+eNHjLmVUgLXO5PG40UvKSGs2pbDCIdUkfcJZNSICuO95oA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e4ec9083-e574-438f-9865-6f30ddf94539",
+                            SecurityStamp = "d4ca1e3d-2458-4e3c-a9cb-b10952027d56",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -614,13 +640,13 @@ namespace LoveAtFirstSight.Migrations
                         {
                             Id = "5678efgh-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9b3d04ab-7378-49d2-8845-8b29095b918f",
+                            ConcurrencyStamp = "47443f0e-7c25-48f7-8f3d-6fdba978ff7f",
                             Email = "rachelmdominie@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEKoYWM39to9b2DSPWEQegaLtH0qRR762OD9OrMxZFZKwHD5eCELZNI2NCC4hnwQbqg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJoN84SiAhP4icbQWN+hyHh2zVlLoljcv7EhUIF4kDrj5W+mXN6I17VN7aQJmNFttg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "81dd0aa2-4f99-4703-9968-805a62e356df",
+                            SecurityStamp = "c9fe48f7-41e6-4bbd-a567-952770f1d0f7",
                             TwoFactorEnabled = false,
                             UserName = "RachelD"
                         },
@@ -628,13 +654,13 @@ namespace LoveAtFirstSight.Migrations
                         {
                             Id = "9012ijkl-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "04e7f8c0-728e-4051-ab2e-eb8581465429",
+                            ConcurrencyStamp = "77ad9c9f-9a4b-4307-a9ec-0b8e9ce2509e",
                             Email = "elizabethspencer@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEIAKIyEKfA/CR9VUe9lUVa+8edFXTnUBIGqt+KLEu3huDRmnZJEcuedIFxs9WscemA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENCtz0rbZhRscQ6/sKpUr9eKcm5Mpxqw0YbjUyxnPh2q+OZDXGOU9DqBCN5UdKLBZw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "aa045d92-fb13-4990-9b23-4f46c10e45f6",
+                            SecurityStamp = "a39794ff-d0d2-41ff-9a0b-f17f85b42a78",
                             TwoFactorEnabled = false,
                             UserName = "ElizabethS"
                         });

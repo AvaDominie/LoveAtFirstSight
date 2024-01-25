@@ -170,6 +170,18 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             Fostered = false,
             DateAdded = new DateTime(2023, 7, 1),
             UrlPic = "https://i.pinimg.com/736x/39/55/fb/3955fb5e4a3168fae68c51696ee94f1e.jpg"
+        },
+        new Animal
+        {
+            Id = 6,
+            IsDog = false,
+            IsMale = false,
+            Name = "Cloud",
+            Age = 1,
+            Available = false,
+            Fostered = true,
+            DateAdded = new DateTime(2023, 7, 1),
+            UrlPic = "https://i.pinimg.com/736x/28/8b/fa/288bfa66c76c39834fc3c6f53b5ccb02.jpg"
         });
 
         modelBuilder.Entity<Breed>().HasData(
@@ -257,6 +269,12 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             Id = 10,
             AnimalId = 5,
             BreedId = 15
+        },
+        new AnimalBreed
+        {
+            Id = 11,
+            AnimalId = 6,
+            BreedId = 12
         }
         );
 
@@ -282,6 +300,13 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             AnimalId = 5,
             UserProfileId = 3,
             TimeOfAdoption = new DateTime(2023, 8, 3),
+        },
+        new Adopted
+        {
+            Id = 4,
+            Foster = true,
+            AnimalId = 6,
+            UserProfileId = 2
         }
         );
     }
