@@ -20,5 +20,10 @@ export const getFosteredCats = () => {
     return fetch(`${_apiUrl}/allFosteredCats`).then((res) => res.json());
 };
 
+export const getDogsByBreed = (breedName) => {
+    return fetch(`${_apiUrl}/allDogsBreed/${breedName}`).then((res) => res.json());
+};
 
-
+export const getFosteredDogsByBreed = (breedName) => {
+    return fetch(`${_apiUrl}/allFosteredDogsByBreed/${breedName}`).then((res) => res.json());
+};
