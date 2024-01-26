@@ -185,30 +185,145 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
         });
 
         modelBuilder.Entity<Breed>().HasData(
-            new Breed { Id = 1, Name = "English BullDog" },
-            new Breed { Id = 2, Name = "Labrador Retriever" },
-            new Breed { Id = 3, Name = "Golden Retriever" },
-            new Breed { Id = 4, Name = "Bulldog" },
-            new Breed { Id = 5, Name = "Beagle" },
-            new Breed { Id = 6, Name = "Rottweiler" },
-            new Breed { Id = 7, Name = "Shih Tzu" },
-            new Breed { Id = 8, Name = "Yorkshire Terrier" },
-            new Breed { Id = 9, Name = "Boxer" },
-            new Breed { Id = 10, Name = "Border Collie" },
-            new Breed { Id = 11, Name = "Siberian Husky" },
-            new Breed { Id = 12, Name = "Persian Cat" },
-            new Breed { Id = 13, Name = "Siamese Cat" },
-            new Breed { Id = 14, Name = "Maine Coon" },
-            new Breed { Id = 15, Name = "Abyssinian Cat" },
-            new Breed { Id = 16, Name = "Bengal Cat" },
-            new Breed { Id = 17, Name = "Bombay Cat" },
-            new Breed { Id = 18, Name = "Cornish Rex Cat" },
-            new Breed { Id = 19, Name = "Egyptian Mau Cat" },
-            new Breed { Id = 20, Name = "Exotic Shorthair Cat" },
-            new Breed { Id = 21, Name = "Havana Brown Cat" },
-            new Breed { Id = 22, Name = "Scottish Fold Cat" },
-            new Breed { Id = 23, Name = "Sphynx Cat" }
-        );
+        new Breed
+        {
+            Id = 1,
+            Name = "English BullDog",
+            IsDog = true
+        },
+        new Breed
+        {
+            Id = 2,
+            Name = "Labrador Retriever",
+            IsDog = true
+        },
+        new Breed
+        {
+            Id = 3,
+            Name = "Golden Retriever",
+            IsDog = true
+        },
+        new Breed
+        {
+            Id = 4,
+            Name = "Bulldog",
+            IsDog = true
+        },
+        new Breed
+        {
+            Id = 5,
+            Name = "Beagle",
+            IsDog = true
+        },
+        new Breed
+        {
+            Id = 6,
+            Name = "Rottweiler",
+            IsDog = true
+        },
+        new Breed
+        {
+            Id = 7,
+            Name = "Shih Tzu",
+            IsDog = true
+        },
+        new Breed
+        {
+            Id = 8,
+            Name = "Yorkshire Terrier",
+            IsDog = true
+        },
+        new Breed
+        {
+            Id = 9,
+            Name = "Boxer",
+            IsDog = true
+        },
+        new Breed
+        {
+            Id = 10,
+            Name = "Border Collie",
+            IsDog = true
+        },
+        new Breed
+        {
+            Id = 11,
+            Name = "Siberian Husky",
+            IsDog = true
+        },
+        new Breed
+        {
+            Id = 12,
+            Name = "Persian Cat",
+            IsDog = false
+        },
+        new Breed
+        {
+            Id = 13,
+            Name = "Siamese Cat",
+            IsDog = false
+        },
+        new Breed
+        {
+            Id = 14,
+            Name = "Maine Coon",
+            IsDog = false
+        },
+        new Breed
+        {
+            Id = 15,
+            Name = "Abyssinian Cat",
+            IsDog = false
+        },
+        new Breed
+        {
+            Id = 16,
+            Name = "Bengal Cat",
+            IsDog = false
+        },
+        new Breed
+        {
+            Id = 17,
+            Name = "Bombay Cat",
+            IsDog = false
+        },
+        new Breed
+        {
+            Id = 18,
+            Name = "Cornish Rex Cat",
+            IsDog = false
+        },
+        new Breed
+        {
+            Id = 19,
+            Name = "Egyptian Mau Cat",
+            IsDog = false
+        },
+        new Breed
+        {
+            Id = 20,
+            Name = "Exotic Shorthair Cat",
+            IsDog = false
+        },
+        new Breed
+        {
+            Id = 21,
+            Name = "Havana Brown Cat",
+            IsDog = false
+        },
+        new Breed
+        {
+            Id = 22,
+            Name = "Scottish Fold Cat",
+            IsDog = false
+        },
+        new Breed
+        {
+            Id = 23,
+            Name = "Sphynx Cat",
+            IsDog = false
+        });
+
 
         modelBuilder.Entity<AnimalBreed>().HasData(new AnimalBreed
         {
@@ -275,8 +390,7 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             Id = 11,
             AnimalId = 6,
             BreedId = 12
-        }
-        );
+        });
 
         modelBuilder.Entity<Adopted>().HasData(new Adopted
         {
@@ -307,8 +421,7 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             Foster = true,
             AnimalId = 6,
             UserProfileId = 2
-        }
-        );
+        });
     }
 }
 

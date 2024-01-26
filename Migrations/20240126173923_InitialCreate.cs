@@ -75,7 +75,8 @@ namespace LoveAtFirstSight.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    IsDog = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -293,39 +294,39 @@ namespace LoveAtFirstSight.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "5678efgh-0829-4ac5-a3ed-180f5e916a5f", 0, "47443f0e-7c25-48f7-8f3d-6fdba978ff7f", "rachelmdominie@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEJoN84SiAhP4icbQWN+hyHh2zVlLoljcv7EhUIF4kDrj5W+mXN6I17VN7aQJmNFttg==", null, false, "c9fe48f7-41e6-4bbd-a567-952770f1d0f7", false, "RachelD" },
-                    { "9012ijkl-0829-4ac5-a3ed-180f5e916a5f", 0, "77ad9c9f-9a4b-4307-a9ec-0b8e9ce2509e", "elizabethspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAENCtz0rbZhRscQ6/sKpUr9eKcm5Mpxqw0YbjUyxnPh2q+OZDXGOU9DqBCN5UdKLBZw==", null, false, "a39794ff-d0d2-41ff-9a0b-f17f85b42a78", false, "ElizabethS" },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "1457d752-24c7-42e6-9189-58964fad3057", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEGAc564fCdQMnZNhCKN+eNHjLmVUgLXO5PG40UvKSGs2pbDCIdUkfcJZNSICuO95oA==", null, false, "d4ca1e3d-2458-4e3c-a9cb-b10952027d56", false, "Administrator" }
+                    { "5678efgh-0829-4ac5-a3ed-180f5e916a5f", 0, "dde4a239-a283-4faa-b662-c383c33194d3", "rachelmdominie@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEK+rhDaM6YbPkgQB6t1OwEd7rSUgreS7PiopqzBgbnJNA4Zmp5jxdYffLec2f6Bbaw==", null, false, "62a0623f-4404-44b9-8b2a-60330806e138", false, "RachelD" },
+                    { "9012ijkl-0829-4ac5-a3ed-180f5e916a5f", 0, "8ec02fbf-e24a-43f7-a894-abb3d07a0fad", "elizabethspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEFX1IxbwVY6AGT8BRoV9d6l6cUKaARSLvnQ6Y+92ZhKSDQLtZBg0WATxJFxyb32/hg==", null, false, "027dcc5b-3a38-4fca-bc6b-283dea1d554f", false, "ElizabethS" },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "11311240-ade6-4a71-97fe-320b89386a80", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEARC5NZ91iFYA4mIwPPsRs0IBXwGje9grvOO4QCMTj+6rNsQfZz8f3ExDGkGTo/XMw==", null, false, "5da53b0d-7fe8-4dc2-bafc-c663ce5f4b7c", false, "Administrator" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Breeds",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "Id", "IsDog", "Name" },
                 values: new object[,]
                 {
-                    { 1, "English BullDog" },
-                    { 2, "Labrador Retriever" },
-                    { 3, "Golden Retriever" },
-                    { 4, "Bulldog" },
-                    { 5, "Beagle" },
-                    { 6, "Rottweiler" },
-                    { 7, "Shih Tzu" },
-                    { 8, "Yorkshire Terrier" },
-                    { 9, "Boxer" },
-                    { 10, "Border Collie" },
-                    { 11, "Siberian Husky" },
-                    { 12, "Persian Cat" },
-                    { 13, "Siamese Cat" },
-                    { 14, "Maine Coon" },
-                    { 15, "Abyssinian Cat" },
-                    { 16, "Bengal Cat" },
-                    { 17, "Bombay Cat" },
-                    { 18, "Cornish Rex Cat" },
-                    { 19, "Egyptian Mau Cat" },
-                    { 20, "Exotic Shorthair Cat" },
-                    { 21, "Havana Brown Cat" },
-                    { 22, "Scottish Fold Cat" },
-                    { 23, "Sphynx Cat" }
+                    { 1, true, "English BullDog" },
+                    { 2, true, "Labrador Retriever" },
+                    { 3, true, "Golden Retriever" },
+                    { 4, true, "Bulldog" },
+                    { 5, true, "Beagle" },
+                    { 6, true, "Rottweiler" },
+                    { 7, true, "Shih Tzu" },
+                    { 8, true, "Yorkshire Terrier" },
+                    { 9, true, "Boxer" },
+                    { 10, true, "Border Collie" },
+                    { 11, true, "Siberian Husky" },
+                    { 12, false, "Persian Cat" },
+                    { 13, false, "Siamese Cat" },
+                    { 14, false, "Maine Coon" },
+                    { 15, false, "Abyssinian Cat" },
+                    { 16, false, "Bengal Cat" },
+                    { 17, false, "Bombay Cat" },
+                    { 18, false, "Cornish Rex Cat" },
+                    { 19, false, "Egyptian Mau Cat" },
+                    { 20, false, "Exotic Shorthair Cat" },
+                    { 21, false, "Havana Brown Cat" },
+                    { 22, false, "Scottish Fold Cat" },
+                    { 23, false, "Sphynx Cat" }
                 });
 
             migrationBuilder.InsertData(

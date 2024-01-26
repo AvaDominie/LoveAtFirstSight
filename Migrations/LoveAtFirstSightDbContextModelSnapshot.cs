@@ -297,6 +297,9 @@ namespace LoveAtFirstSight.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("IsDog")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -309,116 +312,139 @@ namespace LoveAtFirstSight.Migrations
                         new
                         {
                             Id = 1,
+                            IsDog = true,
                             Name = "English BullDog"
                         },
                         new
                         {
                             Id = 2,
+                            IsDog = true,
                             Name = "Labrador Retriever"
                         },
                         new
                         {
                             Id = 3,
+                            IsDog = true,
                             Name = "Golden Retriever"
                         },
                         new
                         {
                             Id = 4,
+                            IsDog = true,
                             Name = "Bulldog"
                         },
                         new
                         {
                             Id = 5,
+                            IsDog = true,
                             Name = "Beagle"
                         },
                         new
                         {
                             Id = 6,
+                            IsDog = true,
                             Name = "Rottweiler"
                         },
                         new
                         {
                             Id = 7,
+                            IsDog = true,
                             Name = "Shih Tzu"
                         },
                         new
                         {
                             Id = 8,
+                            IsDog = true,
                             Name = "Yorkshire Terrier"
                         },
                         new
                         {
                             Id = 9,
+                            IsDog = true,
                             Name = "Boxer"
                         },
                         new
                         {
                             Id = 10,
+                            IsDog = true,
                             Name = "Border Collie"
                         },
                         new
                         {
                             Id = 11,
+                            IsDog = true,
                             Name = "Siberian Husky"
                         },
                         new
                         {
                             Id = 12,
+                            IsDog = false,
                             Name = "Persian Cat"
                         },
                         new
                         {
                             Id = 13,
+                            IsDog = false,
                             Name = "Siamese Cat"
                         },
                         new
                         {
                             Id = 14,
+                            IsDog = false,
                             Name = "Maine Coon"
                         },
                         new
                         {
                             Id = 15,
+                            IsDog = false,
                             Name = "Abyssinian Cat"
                         },
                         new
                         {
                             Id = 16,
+                            IsDog = false,
                             Name = "Bengal Cat"
                         },
                         new
                         {
                             Id = 17,
+                            IsDog = false,
                             Name = "Bombay Cat"
                         },
                         new
                         {
                             Id = 18,
+                            IsDog = false,
                             Name = "Cornish Rex Cat"
                         },
                         new
                         {
                             Id = 19,
+                            IsDog = false,
                             Name = "Egyptian Mau Cat"
                         },
                         new
                         {
                             Id = 20,
+                            IsDog = false,
                             Name = "Exotic Shorthair Cat"
                         },
                         new
                         {
                             Id = 21,
+                            IsDog = false,
                             Name = "Havana Brown Cat"
                         },
                         new
                         {
                             Id = 22,
+                            IsDog = false,
                             Name = "Scottish Fold Cat"
                         },
                         new
                         {
                             Id = 23,
+                            IsDog = false,
                             Name = "Sphynx Cat"
                         });
                 });
@@ -626,13 +652,13 @@ namespace LoveAtFirstSight.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1457d752-24c7-42e6-9189-58964fad3057",
+                            ConcurrencyStamp = "11311240-ade6-4a71-97fe-320b89386a80",
                             Email = "admina@strator.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGAc564fCdQMnZNhCKN+eNHjLmVUgLXO5PG40UvKSGs2pbDCIdUkfcJZNSICuO95oA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEARC5NZ91iFYA4mIwPPsRs0IBXwGje9grvOO4QCMTj+6rNsQfZz8f3ExDGkGTo/XMw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d4ca1e3d-2458-4e3c-a9cb-b10952027d56",
+                            SecurityStamp = "5da53b0d-7fe8-4dc2-bafc-c663ce5f4b7c",
                             TwoFactorEnabled = false,
                             UserName = "Administrator"
                         },
@@ -640,13 +666,13 @@ namespace LoveAtFirstSight.Migrations
                         {
                             Id = "5678efgh-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "47443f0e-7c25-48f7-8f3d-6fdba978ff7f",
+                            ConcurrencyStamp = "dde4a239-a283-4faa-b662-c383c33194d3",
                             Email = "rachelmdominie@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEJoN84SiAhP4icbQWN+hyHh2zVlLoljcv7EhUIF4kDrj5W+mXN6I17VN7aQJmNFttg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK+rhDaM6YbPkgQB6t1OwEd7rSUgreS7PiopqzBgbnJNA4Zmp5jxdYffLec2f6Bbaw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c9fe48f7-41e6-4bbd-a567-952770f1d0f7",
+                            SecurityStamp = "62a0623f-4404-44b9-8b2a-60330806e138",
                             TwoFactorEnabled = false,
                             UserName = "RachelD"
                         },
@@ -654,13 +680,13 @@ namespace LoveAtFirstSight.Migrations
                         {
                             Id = "9012ijkl-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "77ad9c9f-9a4b-4307-a9ec-0b8e9ce2509e",
+                            ConcurrencyStamp = "8ec02fbf-e24a-43f7-a894-abb3d07a0fad",
                             Email = "elizabethspencer@example.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAENCtz0rbZhRscQ6/sKpUr9eKcm5Mpxqw0YbjUyxnPh2q+OZDXGOU9DqBCN5UdKLBZw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFX1IxbwVY6AGT8BRoV9d6l6cUKaARSLvnQ6Y+92ZhKSDQLtZBg0WATxJFxyb32/hg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a39794ff-d0d2-41ff-9a0b-f17f85b42a78",
+                            SecurityStamp = "027dcc5b-3a38-4fca-bc6b-283dea1d554f",
                             TwoFactorEnabled = false,
                             UserName = "ElizabethS"
                         });
