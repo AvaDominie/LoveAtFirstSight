@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
-import { getCats, getFosteredCats } from "../../managers/AnimalManager";
+import { getCats, getCatsByBreed, getFosteredCats, getFosteredCatsByBreed } from "../../managers/AnimalManager";
 import "./Animal.css"
+import { getCatBreeds } from "../../managers/BreedManager";
+
 
 export default function CatList() {
-    const [Cats, setCats] = useState([]);
-    const [filteredFostered, setFilteredFostered] = useState([])
+    const [cats, setCats] = useState([]);
+    const [filteredFostered, setFilteredFostered] = useState([]);
     const [displayFostered, setDisplayFostered] = useState(false);
+    const [breeds, setBreeds] = useState([]);
+    const [selectedBreed, setSelectedBreed] = useState("");
+
 
 
 
@@ -17,9 +22,18 @@ export default function CatList() {
         getFosteredCats().then(setFilteredFostered);
     };
 
+    const getCatBreed = () => {
+        getCatBreeds().then(setBreeds)
+    }
+
     const handleButtonClick = () => {
         setDisplayFostered(!displayFostered);
         document.getElementById("fostered").classList.toggle("clicked");
+    };
+
+    const handleBreedChange = (event) => {
+        const breed = event.target.value;
+        setSelectedBreed(breed);
     };
 
 
@@ -28,12 +42,31 @@ export default function CatList() {
     }, []);
 
     useEffect(() => {
-        getFosterCats();
+        if (selectedBreed !== "") {
+            getFosteredCatsByBreed(selectedBreed).then(setFilteredFostered);
+        } else {
+            getFosterCats();
+        }
+    }, [selectedBreed]);
+    
+    useEffect(() => {
+        getCatBreed();
     }, []);
 
-    console.log("All Avalible Cats", Cats)
+    useEffect(() => {
+        if (selectedBreed !== "") {
+            getCatsByBreed(selectedBreed).then(setCats);
+        } else {
+            getAllCats();
+        }
+    }, [selectedBreed]);
 
-    console.log("All Fostered Cats", filteredFostered)
+
+    console.log("All Available Cats", cats);
+    console.log("All Fostered Cats", filteredFostered);
+    console.log("All Breeds", breeds)
+    console.log("Selected breeds", selectedBreed)
+    console.log("Get all foster Cats filtered by breed", )
 
 
     return (
@@ -43,13 +76,21 @@ export default function CatList() {
                 <button id="fostered" onClick={handleButtonClick}>
                     Fostered
                 </button>
+                <select onChange={(e) => setSelectedBreed(e.target.value)}>
+                    <option value="">All breeds</option>
+                    {breeds.map((breed) => (
+                        <option key={breed.id} value={breed.name}>
+                            {breed.name}
+                        </option>
+                    ))}
+                </select>
             </div>
             {displayFostered ? filteredFostered.map((cat) => (
                 <div key={cat.id}>
                     <p>{cat.name}</p>
                     <img className="cat-picture" src={cat.urlPic} alt={cat.name} />
                 </div>
-            )) : Cats.map((cat) => (
+            )) : cats.map((cat) => (
                 <div key={cat.id}>
                     <p>{cat.name}</p>
                     <img className="cat-picture" src={cat.urlPic} alt={cat.name} />
@@ -58,4 +99,9 @@ export default function CatList() {
         </>
     );
 }
+
+
+
+
+
 
