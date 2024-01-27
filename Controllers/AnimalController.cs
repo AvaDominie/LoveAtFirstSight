@@ -274,7 +274,7 @@ public class AnimalController : ControllerBase
     public IActionResult GetFosteredDogsByBreed(string breedName)
     {
         return Ok(_dbContext
-        .Animals        
+        .Animals
         .Where(an => an.AnimalBreeds.Any(ab => ab.Breed.Name == breedName))
         .Where(an => an.Available == true)
         .Where(an => an.IsDog == true)
@@ -310,6 +310,87 @@ public class AnimalController : ControllerBase
         .ToList());
     }
 
+    // get all cats for a breed
+    [HttpGet("allCatsBreed/{breedName}")]
+    // [Authorize]
+    public IActionResult GetCatsBreed(string breedName)
+    {
+        return Ok(_dbContext
+        .Animals
+        .Where(an => an.AnimalBreeds.Any(ab => ab.Breed.Name == breedName))
+        .Where(an => an.Available == true)
+        .Where(an => an.IsDog == false)
+        .Include(an => an.Adoptions)
+        .Include(an => an.AnimalBreeds)
+        .Select(an => new AnimalDTO
+        {
+            Id = an.Id,
+            IsDog = an.IsDog,
+            IsMale = an.IsMale,
+            Name = an.Name,
+            Age = an.Age,
+            Available = an.Available,
+            Fostered = an.Fostered,
+            DateAdded = an.DateAdded,
+            UrlPic = an.UrlPic,
+            AnimalBreeds = an.AnimalBreeds.Select(ab => new AnimalBreedDTO
+            {
+                Id = ab.Id,
+                AnimalId = ab.AnimalId,
+                BreedId = ab.BreedId
+            }).ToList(),
+            Adoptions = an.Adoptions.Select(ad => new AdoptedDTO
+            {
+                Id = ad.Id,
+                Foster = ad.Foster,
+                AnimalId = ad.AnimalId,
+                UserProfileId = ad.UserProfileId,
+                TimeOfAdoption = ad.TimeOfAdoption
+            }).ToList()
+        })
+        .ToList());
+    }
 
+    // get all fostered cats by breed
+    [HttpGet("allFosteredCatsByBreed/{breedName}")]
+    // [Authorize]
+    public IActionResult GetFosteredCatsByBreed(string breedName)
+    {
+        return Ok(_dbContext
+        .Animals
+        .Where(an => an.AnimalBreeds.Any(ab => ab.Breed.Name == breedName))
+        .Where(an => an.Available == true)
+        .Where(an => an.IsDog == false)
+        .Where(an => an.Fostered == true)
+        .Include(an => an.Adoptions)
+        .Include(an => an.AnimalBreeds)
+        .Select(an => new AnimalDTO
+        {
+            Id = an.Id,
+            IsDog = an.IsDog,
+            IsMale = an.IsMale,
+            Name = an.Name,
+            Age = an.Age,
+            Available = an.Available,
+            Fostered = an.Fostered,
+            DateAdded = an.DateAdded,
+            UrlPic = an.UrlPic,
+            AnimalBreeds = an.AnimalBreeds.Select(ab => new AnimalBreedDTO
+            {
+                Id = ab.Id,
+                AnimalId = ab.AnimalId,
+                BreedId = ab.BreedId
+            }).ToList(),
+            Adoptions = an.Adoptions.Select(ad => new AdoptedDTO
+            {
+                Id = ad.Id,
+                Foster = ad.Foster,
+                AnimalId = ad.AnimalId,
+                UserProfileId = ad.UserProfileId,
+                TimeOfAdoption = ad.TimeOfAdoption
+            }).ToList()
+        })
+        .ToList());
+    }
 
 }

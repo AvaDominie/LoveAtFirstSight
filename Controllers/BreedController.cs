@@ -42,7 +42,29 @@ public class BreedController : ControllerBase
         .ToList());
     }
 
-
+    // Get all breeds
+    [HttpGet("cats")]
+    // [Authorize]
+    public IActionResult GetCatBreeds()
+    {
+        return Ok(_dbContext
+        .Breeds
+        .Where(br => br.IsDog == false)
+        .Include(an => an.AnimalBreeds)
+        .Select(an => new BreedDTO
+        {
+            Id = an.Id,
+            Name = an.Name,
+            IsDog = an.IsDog,
+            AnimalBreeds = an.AnimalBreeds.Select(ab => new AnimalBreedDTO
+            {
+                Id = ab.Id,
+                AnimalId = ab.AnimalId,
+                BreedId = ab.BreedId
+            }).ToList()
+        })
+        .ToList());
+    }
 
 
 }
