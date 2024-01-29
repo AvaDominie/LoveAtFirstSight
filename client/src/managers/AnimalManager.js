@@ -35,3 +35,7 @@ export const getCatsByBreed = (breedName) => {
 export const getFosteredCatsByBreed = (breedName) => {
     return fetch(`${_apiUrl}/allFosteredCatsByBreed/${breedName}`).then((res) => res.json());
 };
+
+export const getAnimalById = (id) => {
+    return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
+};

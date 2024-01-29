@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getDogs, getDogsByBreed, getFosteredDogs, getFosteredDogsByBreed } from "../../managers/AnimalManager";
 import "./Animal.css"
 import { getDogBreeds } from "../../managers/BreedManager";
+import { Link } from "react-router-dom";
 
 
 export default function DogList() {
@@ -48,7 +49,7 @@ export default function DogList() {
             getFosterDogs();
         }
     }, [selectedBreed]);
-    
+
     useEffect(() => {
         getDogBreed();
     }, []);
@@ -66,7 +67,6 @@ export default function DogList() {
     console.log("All Fostered dogs", filteredFostered);
     console.log("All Breeds", breeds)
     console.log("Selected breeds", selectedBreed)
-    console.log("Get all foster dogs filtered by breed", )
 
 
     return (
@@ -88,12 +88,16 @@ export default function DogList() {
             {displayFostered ? filteredFostered.map((dog) => (
                 <div key={dog.id}>
                     <p>{dog.name}</p>
-                    <img className="dog-picture" src={dog.urlPic} alt={dog.name} />
+                    <Link to={`/animalDetails/${dog.id}`} >
+                        <img className="dog-picture" src={dog.urlPic} alt={dog.name} />
+                    </Link>
                 </div>
             )) : dogs.map((dog) => (
                 <div key={dog.id}>
                     <p>{dog.name}</p>
-                    <img className="dog-picture" src={dog.urlPic} alt={dog.name} />
+                    <Link to={`/animalDetails/${dog.id}`} >
+                        <img className="dog-picture" src={dog.urlPic} alt={dog.name} />
+                    </Link>
                 </div>
             ))}
         </>

@@ -5,6 +5,7 @@ import Register from "./auth/Register";
 import Home from "./Home";
 import Dogs from "./animals/Dogs";
 import Cats from "./animals/Cats";
+import AnimalDetails from "./animals/AnimalDetails";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -32,6 +33,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     element={
                         <AuthorizedRoute loggedInUser={loggedInUser}>
                             <Cats />
+                        </AuthorizedRoute>
+                    }
+                />
+                <Route
+                    path="animalDetails/:animalId"
+                    element={
+                        <AuthorizedRoute loggedInUser={loggedInUser}>
+                            <AnimalDetails />
                         </AuthorizedRoute>
                     }
                 />
