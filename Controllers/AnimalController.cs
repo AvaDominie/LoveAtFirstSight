@@ -1,5 +1,7 @@
 using LoveAtFirstSight.Data;
+using LoveAtFirstSight.Models;
 using LoveAtFirstSight.Models.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -392,5 +394,26 @@ public class AnimalController : ControllerBase
         })
         .ToList());
     }
+
+
+    [HttpGet("{id}")]
+    [Authorize]
+    public IActionResult GetById(int id)
+    {
+        Animal animal = _dbContext
+            .Animals
+            .Include(an => an.Adoptions)
+            .Include(an => an.AnimalBreeds)
+                .ThenInclude(an => an.Breed)
+            .SingleOrDefault(an => an.Id == id);
+
+        if (animal == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(animal);
+    }
+
 
 }
