@@ -63,12 +63,6 @@ export default function DogList() {
     }, [selectedBreed]);
 
 
-    console.log("All Available dogs", dogs);
-    console.log("All Fostered dogs", filteredFostered);
-    console.log("All Breeds", breeds)
-    console.log("Selected breeds", selectedBreed)
-
-
     return (
         <>
             <h2>Available Dogs</h2>
