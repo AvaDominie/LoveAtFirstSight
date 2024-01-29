@@ -32,8 +32,6 @@ export default function AnimalDetails() {
     const breedsArray = animal.animalBreeds.map(animalBreed => animalBreed.breed.name);
     const breedsString = breedsArray.join(", ");
 
-    console.log(animal.animalBreeds)
-    console.log("breed", animal.animalBreeds.breed)
 
     return (
         <>
@@ -42,15 +40,12 @@ export default function AnimalDetails() {
                 <img className="animal-picture" src={animal.urlPic} alt={animal.name} />
                 <p>Name: {animal.name}</p>
                 <p>Breed/s: {breedsString}</p>
-                <p>Age: {animal.age}</p>
+                <p>Age: {animal.age} months</p>
                 <p>Date Added: {new Date(animal.dateAdded).toLocaleDateString('en-CA')}</p>
-                <p>Currently being Fostered: {String(animal.fostered)}</p>
-                <p>Adopted: {String(animal.available)}</p>
+                <p>Currently being Fostered: {animal.fostered ? 'Yes' : 'No'}</p>
+                <p>Adopted: {animal.available ? 'Yes' : 'No'}</p>
             </div>
         </>
     );
 
 }
-// {animal.animalBreeds.map((animalBreed) => (
-//     <p key={animalBreed.id}>Breed: {animalBreed.breed.name}</p>
-// ))}
