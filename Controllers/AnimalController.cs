@@ -417,7 +417,7 @@ public class AnimalController : ControllerBase
 
 
     // update animals availablity when it's adopted
-    [HttpPut("updateAvailable/{animalId}")]
+    [HttpPut("updateAvailability/{animalId}")]
     [Authorize]
     public IActionResult UpdateAnimalAvailability(int animalId)
     {

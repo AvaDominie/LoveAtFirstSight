@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { getAnimalById, updateAnimalAvailability } from "../../managers/AnimalManager";
+import { getAnimalById, updateAnimalAvailability, updateAnimalFostered } from "../../managers/AnimalManager";
 import { useParams } from "react-router-dom";
-import { createAdoption } from "../../managers/AdoptManager";
+import { createAdoption, createFoster } from "../../managers/AdoptManager";
 
 
 
@@ -18,6 +18,15 @@ export default function AnimalDetails({ loggedInUser }) {
         createAdoption(animalId, loggedInUser.id);
         updateAnimalAvailability(animalId);
     }
+
+    const handleFoster = () => {
+        createFoster(animalId, loggedInUser.id);
+        updateAnimalFostered(animalId);
+    }
+
+
+
+
     useEffect(() => {
         console.log("user", loggedInUser)
     }, [loggedInUser])
@@ -40,7 +49,7 @@ export default function AnimalDetails({ loggedInUser }) {
 
     const breedsArray = animal.animalBreeds.map(animalBreed => animalBreed.breed.name);
     const breedsString = breedsArray.join(", ");
-
+    console.log("animal", animal)
 
     return (
         <>
@@ -54,7 +63,7 @@ export default function AnimalDetails({ loggedInUser }) {
                 <p>Currently being Fostered: {animal.fostered ? 'Yes' : 'No'}</p>
                 <p>Adopted: {animal.available ? 'No' : 'Yes'}</p>
                 <button onClick={handleAdopt}>Adopt</button>
-                <button>Foster</button>
+                <button onClick={handleFoster}>Foster</button>
                 <button>Return Foster</button>
             </div>
         </>
