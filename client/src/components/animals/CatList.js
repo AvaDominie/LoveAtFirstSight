@@ -63,6 +63,12 @@ export default function CatList() {
     }, [selectedBreed]);
 
 
+    console.log("All Available Cats", cats);
+    console.log("All Fostered Cats", filteredFostered);
+    console.log("All Breeds", breeds)
+    console.log("Selected breeds", selectedBreed)
+
+
     return (
         <>
             <h2>Available Cats</h2>
