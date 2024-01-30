@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getCats, getCatsByBreed, getFosteredCats, getFosteredCatsByBreed } from "../../managers/AnimalManager";
 import "./Animal.css"
 import { getCatBreeds } from "../../managers/BreedManager";
+import { Link } from "react-router-dom";
 
 
 export default function CatList() {
@@ -66,7 +67,6 @@ export default function CatList() {
     console.log("All Fostered Cats", filteredFostered);
     console.log("All Breeds", breeds)
     console.log("Selected breeds", selectedBreed)
-    console.log("Get all foster Cats filtered by breed", )
 
 
     return (
@@ -88,12 +88,16 @@ export default function CatList() {
             {displayFostered ? filteredFostered.map((cat) => (
                 <div key={cat.id}>
                     <p>{cat.name}</p>
+                    <Link to={`/animalDetails/${cat.id}`} >
                     <img className="cat-picture" src={cat.urlPic} alt={cat.name} />
+                    </Link>
                 </div>
             )) : cats.map((cat) => (
                 <div key={cat.id}>
                     <p>{cat.name}</p>
+                    <Link to={`/animalDetails/${cat.id}`} >
                     <img className="cat-picture" src={cat.urlPic} alt={cat.name} />
+                    </Link>
                 </div>
             ))}
         </>

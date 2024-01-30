@@ -49,7 +49,7 @@ export default function DogList() {
             getFosterDogs();
         }
     }, [selectedBreed]);
-
+    
     useEffect(() => {
         getDogBreed();
     }, []);
@@ -89,20 +89,21 @@ export default function DogList() {
                 <div key={dog.id}>
                     <p>{dog.name}</p>
                     <Link to={`/animalDetails/${dog.id}`} >
-                        <img className="dog-picture" src={dog.urlPic} alt={dog.name} />
+                    <img className="dog-picture" src={dog.urlPic} alt={dog.name} />
                     </Link>
                 </div>
             )) : dogs.map((dog) => (
                 <div key={dog.id}>
                     <p>{dog.name}</p>
                     <Link to={`/animalDetails/${dog.id}`} >
-                        <img className="dog-picture" src={dog.urlPic} alt={dog.name} />
-                    </Link>
+                    <img className="dog-picture" src={dog.urlPic} alt={dog.name} />
+                </Link>
                 </div>
             ))}
         </>
     );
 }
+
 
 
 

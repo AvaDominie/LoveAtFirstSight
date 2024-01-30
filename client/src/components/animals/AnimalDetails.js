@@ -1,18 +1,27 @@
 import { useEffect, useState } from "react"
-import { getAnimalById } from "../../managers/AnimalManager";
+import { getAnimalById, updateAnimalAvailability } from "../../managers/AnimalManager";
 import { useParams } from "react-router-dom";
+import { createAdoption } from "../../managers/AdoptManager";
 
 
 
-export default function AnimalDetails() {
+export default function AnimalDetails({ loggedInUser }) {
     const [animal, setAnimal] = useState(null);
     const { animalId } = useParams();
+
 
     const getAnimalDetails = (id) => {
         getAnimalById(id).then(setAnimal);
     }
 
-    
+    const handleAdopt = () => {
+        createAdoption(animalId, loggedInUser.id);
+        updateAnimalAvailability(animalId);
+    }
+    useEffect(() => {
+        console.log("user", loggedInUser)
+    }, [loggedInUser])
+
     useEffect(() => {
         if (animalId) {
             getAnimalDetails(animalId);
@@ -28,12 +37,10 @@ export default function AnimalDetails() {
             </>
         );
     }
-    
+
     const breedsArray = animal.animalBreeds.map(animalBreed => animalBreed.breed.name);
     const breedsString = breedsArray.join(", ");
 
-    console.log(animal.animalBreeds)
-    console.log("breed", animal.animalBreeds.breed)
 
     return (
         <>
@@ -42,15 +49,15 @@ export default function AnimalDetails() {
                 <img className="animal-picture" src={animal.urlPic} alt={animal.name} />
                 <p>Name: {animal.name}</p>
                 <p>Breed/s: {breedsString}</p>
-                <p>Age: {animal.age}</p>
+                <p>Age: {animal.age} months</p>
                 <p>Date Added: {new Date(animal.dateAdded).toLocaleDateString('en-CA')}</p>
-                <p>Currently being Fostered: {String(animal.fostered)}</p>
-                <p>Adopted: {String(animal.available)}</p>
+                <p>Currently being Fostered: {animal.fostered ? 'Yes' : 'No'}</p>
+                <p>Adopted: {animal.available ? 'No' : 'Yes'}</p>
+                <button onClick={handleAdopt}>Adopt</button>
+                <button>Foster</button>
+                <button>Return Foster</button>
             </div>
         </>
     );
 
 }
-// {animal.animalBreeds.map((animalBreed) => (
-//     <p key={animalBreed.id}>Breed: {animalBreed.breed.name}</p>
-// ))}

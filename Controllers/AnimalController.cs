@@ -22,12 +22,11 @@ public class AnimalController : ControllerBase
 
     // Get all animals
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public IActionResult Get()
     {
         return Ok(_dbContext
         .Animals
-        .Where(an => an.IsDog == true)
         .Include(an => an.Adoptions)
         .Include(an => an.AnimalBreeds)
         .Select(an => new AnimalDTO
@@ -62,7 +61,7 @@ public class AnimalController : ControllerBase
 
     // get all avaliable dogs
     [HttpGet("allDogs")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetDogs()
     {
         return Ok(_dbContext
@@ -104,7 +103,7 @@ public class AnimalController : ControllerBase
 
     // get all avaliable cats
     [HttpGet("allCats")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetCats()
     {
         return Ok(_dbContext
@@ -147,7 +146,7 @@ public class AnimalController : ControllerBase
 
     // get all fostered dogs
     [HttpGet("allFosteredDogs")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetFosteredDogs()
     {
         return Ok(_dbContext
@@ -189,7 +188,7 @@ public class AnimalController : ControllerBase
 
     // get all fostered cats
     [HttpGet("allFosteredCats")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetFosteredCats()
     {
         return Ok(_dbContext
@@ -231,7 +230,7 @@ public class AnimalController : ControllerBase
 
     // get all dogs for a breed
     [HttpGet("allDogsBreed/{breedName}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetDogsBreed(string breedName)
     {
         return Ok(_dbContext
@@ -272,7 +271,7 @@ public class AnimalController : ControllerBase
 
     // get all fostered dogs by breed
     [HttpGet("allFosteredDogsByBreed/{breedName}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetFosteredDogsByBreed(string breedName)
     {
         return Ok(_dbContext
@@ -314,7 +313,7 @@ public class AnimalController : ControllerBase
 
     // get all cats for a breed
     [HttpGet("allCatsBreed/{breedName}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetCatsBreed(string breedName)
     {
         return Ok(_dbContext
@@ -355,7 +354,7 @@ public class AnimalController : ControllerBase
 
     // get all fostered cats by breed
     [HttpGet("allFosteredCatsByBreed/{breedName}")]
-    // [Authorize]
+    [Authorize]
     public IActionResult GetFosteredCatsByBreed(string breedName)
     {
         return Ok(_dbContext
@@ -395,7 +394,7 @@ public class AnimalController : ControllerBase
         .ToList());
     }
 
-
+    // get animal by Id
     [HttpGet("{id}")]
     [Authorize]
     public IActionResult GetById(int id)
@@ -414,6 +413,67 @@ public class AnimalController : ControllerBase
 
         return Ok(animal);
     }
+
+
+
+    // update animals availablity when it's adopted
+    [HttpPut("updateAvailable/{animalId}")]
+    [Authorize]
+    public IActionResult UpdateAnimalAvailability(int animalId)
+    {
+        // find animal
+        Animal animal = _dbContext.Animals.Find(animalId);
+
+        // check if animal exists
+        if (animal == null)
+        {
+            return NotFound();
+        }
+
+        // check if animal has been adopted
+        var adoption = _dbContext.Adoptions.Any(a => a.AnimalId == animalId);
+        if (adoption)
+        {
+            // update the animal
+            animal.Available = false;
+
+            // save the changes
+            _dbContext.SaveChanges();
+        }
+
+        return NoContent();
+    }
+
+    // update animals foster when it's fostered
+    [HttpPut("updateFoster/{animalId}")]
+    [Authorize]
+    public IActionResult UpdateAnimalFostered(int animalId)
+    {
+        // find animal
+        Animal animal = _dbContext.Animals.Find(animalId);
+
+        // check if animal exists
+        if (animal == null)
+        {
+            return NotFound();
+        }
+
+        // check if animal has been fostered
+        var fostered = _dbContext.Adoptions.Any(a => a.AnimalId == animalId);
+        if (fostered)
+        {
+            // update the animal
+            animal.Fostered = true;
+
+            // save the changes
+            _dbContext.SaveChanges();
+        }
+
+        return NoContent();
+    }
+
+
+
 
 
 }

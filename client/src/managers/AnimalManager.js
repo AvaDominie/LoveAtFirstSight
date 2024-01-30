@@ -39,3 +39,13 @@ export const getFosteredCatsByBreed = (breedName) => {
 export const getAnimalById = (id) => {
     return fetch(`${_apiUrl}/${id}`).then((res) => res.json());
 };
+
+export const updateAnimalAvailability = (animalId) => {
+    return fetch(`${_apiUrl}/${animalId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(animalId),
+    });
+};
