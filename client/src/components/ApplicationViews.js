@@ -7,6 +7,7 @@ import Dogs from "./animals/Dogs";
 import Cats from "./animals/Cats";
 import AnimalDetails from "./animals/AnimalDetails";
 import UserProfile from "./userProfile/UserProfile";
+import UserProfileDetails from "./userProfile/UserProfileDetails";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -49,7 +50,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     path="profile"
                     element={
                         <AuthorizedRoute loggedInUser={loggedInUser}>
-                            <UserProfile />
+                            <UserProfileDetails loggedInUser={loggedInUser} />
                         </AuthorizedRoute>
                     }
                 />
