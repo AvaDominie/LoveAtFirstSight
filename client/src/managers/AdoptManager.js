@@ -20,3 +20,14 @@ export const createFoster = (animalId, userId) => {
         body: JSON.stringify({}),
     }).then((res) => res);
 };
+
+
+export const deleteFoster = (userId, animalId) => {
+    return fetch(`${_apiUrl}/updateUnfosterAdopt/${userId}/${animalId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({}),
+    }).then((res) => res);
+};

@@ -142,8 +142,6 @@ public class AnimalController : ControllerBase
     }
 
 
-
-
     // get all fostered dogs
     [HttpGet("allFosteredDogs")]
     [Authorize]
@@ -415,7 +413,6 @@ public class AnimalController : ControllerBase
     }
 
 
-
     // update animals availablity when it's adopted
     [HttpPut("updateAvailability/{animalId}")]
     [Authorize]
@@ -472,7 +469,28 @@ public class AnimalController : ControllerBase
         return NoContent();
     }
 
+    // soft delete foster
+    [HttpPut("updateUnfosterAdopt/{animalId}")]
+    [Authorize]
+    public IActionResult DeleteAnimalFostered(int animalId)
+    {
+        // find animal
+        Animal animal = _dbContext.Animals.Find(animalId);
 
+        // check if animal exists
+        if (animal == null)
+        {
+            return NotFound();
+        }
+
+        // update the animal
+        animal.Fostered = false;
+
+        // save the changes
+        _dbContext.SaveChanges();
+
+        return NoContent();
+    }
 
 
 

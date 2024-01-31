@@ -59,3 +59,17 @@ export const updateAnimalFostered = (animalId) => {
         body: JSON.stringify(animalId),
     });
 };
+
+
+export const deleteAnimalFostered = (animalId) => {
+    return fetch(`${_apiUrl}/updateUnfosterAdopt/${animalId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(animalId),
+    });
+};
+
+
+

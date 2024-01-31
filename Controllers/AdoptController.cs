@@ -21,17 +21,6 @@ public class AdoptController : ControllerBase
     }
 
 
-    // // Get all adoptions
-    // [HttpGet]
-    // [Authorize]
-    // public IActionResult Get()
-    // {
-    //     return Ok(_dbContext.Adoptions
-    //     .Include(an => an.Animals)
-    //     .Include(an => an.UserProfiles)
-    //     .ToList());
-    // }
-
     // Get all adoptions
     [HttpGet]
     [Authorize]
@@ -107,7 +96,7 @@ public class AdoptController : ControllerBase
 
         Adopted adopted = new Adopted
         {
-            Foster = true,
+            Foster = false,
             AnimalId = animalId,
             UserProfileId = userProfileId,
             TimeOfAdoption = DateTime.Now
@@ -118,6 +107,32 @@ public class AdoptController : ControllerBase
 
         return NoContent();
     }
+
+
+
+    [HttpPut("updateUnfosterAdopt/{userId}/{animalId}")]
+    [Authorize]
+    public IActionResult UpdateUnfoster([FromRoute] int animalId, [FromRoute] int userId)
+    {
+        // Find adoption by id and userId
+        Adopted updatefoster = _dbContext.Adoptions.FirstOrDefault(a => a.AnimalId == animalId && a.UserProfileId == userId);
+
+        // Check if adoption exists
+        if (updatefoster == null)
+        {
+            return NotFound();
+        }
+
+            // Change Foster to false
+            updatefoster.Foster = false;
+
+            // Save the changes
+            _dbContext.SaveChanges();
+
+            return NoContent();
+
+    }
+
 
 
 }
