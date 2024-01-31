@@ -96,7 +96,7 @@ public class AdoptController : ControllerBase
 
         Adopted adopted = new Adopted
         {
-            Foster = false,
+            Foster = true,
             AnimalId = animalId,
             UserProfileId = userProfileId,
             TimeOfAdoption = DateTime.Now
@@ -112,7 +112,7 @@ public class AdoptController : ControllerBase
 
     [HttpPut("updateUnfosterAdopt/{userId}/{animalId}")]
     [Authorize]
-    public IActionResult UpdateUnfoster([FromRoute] int animalId, [FromRoute] int userId)
+    public IActionResult UpdateUnfoster([FromRoute] int userId, [FromRoute] int animalId)
     {
         // Find adoption by id and userId
         Adopted updatefoster = _dbContext.Adoptions.FirstOrDefault(a => a.AnimalId == animalId && a.UserProfileId == userId);
@@ -123,15 +123,37 @@ public class AdoptController : ControllerBase
             return NotFound();
         }
 
-            // Change Foster to false
-            updatefoster.Foster = false;
+        // Change Foster to false
+        updatefoster.Foster = false;
 
-            // Save the changes
-            _dbContext.SaveChanges();
+        // Save the changes
+        _dbContext.SaveChanges();
 
-            return NoContent();
-
+        return NoContent();
     }
+
+
+    // delete adoption
+    [HttpDelete("deleteAdopt/{userId}/{animalId}")]
+    [Authorize]
+    public IActionResult DeleteAdopt([FromRoute] int userId, [FromRoute] int animalId)
+    {
+        // Find adoption by id and userId
+        Adopted adoption = _dbContext.Adoptions.FirstOrDefault(a => a.AnimalId == animalId && a.UserProfileId == userId);
+
+        // Check if adoption exists
+        if (adoption == null)
+        {
+            return NotFound();
+        }
+
+        // Remove the adoption record
+        _dbContext.Adoptions.Remove(adoption);
+        _dbContext.SaveChanges();
+
+        return NoContent();
+    }
+
 
 
 

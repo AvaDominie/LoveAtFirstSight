@@ -5,9 +5,13 @@ import { createAdoption, createFoster, deleteFoster } from "../../managers/Adopt
 
 
 
+
 export default function AnimalDetails({ loggedInUser }) {
     const [animal, setAnimal] = useState(null);
+    const [hasAdopted, setHasAdopted] = useState(false); 
     const { animalId } = useParams();
+
+
 
 
     const getAnimalDetails = (id) => {
@@ -15,8 +19,13 @@ export default function AnimalDetails({ loggedInUser }) {
     }
 
     const handleAdopt = () => {
-        createAdoption(animalId, loggedInUser.id);
-        updateAnimalAvailability(animalId);
+        // Check if the animal has not been adopted already
+        if (!hasAdopted) { 
+            createAdoption(animalId, loggedInUser.id);
+            // Set the state to indicate that the animal has been adopted
+            updateAnimalAvailability(animalId);
+            setHasAdopted(true); 
+        }
     }
 
     const handleFoster = () => {
@@ -24,10 +33,12 @@ export default function AnimalDetails({ loggedInUser }) {
         updateAnimalFostered(animalId);
     }
 
-    const handleReturnFoster = () => {
-        deleteFoster(animalId, loggedInUser.id);
+    const handleDeleteFoster = () => {
+        deleteFoster(loggedInUser.id, animalId);
         deleteAnimalFostered(animalId);
     }
+
+
 
 
 
@@ -42,6 +53,7 @@ export default function AnimalDetails({ loggedInUser }) {
     }, [animalId])
 
 
+    
     if (!animal) {
         return (
             <>
@@ -66,11 +78,10 @@ export default function AnimalDetails({ loggedInUser }) {
                 <p>Date Added: {new Date(animal.dateAdded).toLocaleDateString('en-CA')}</p>
                 <p>Currently being Fostered: {animal.fostered ? 'Yes' : 'No'}</p>
                 <p>Adopted: {animal.available ? 'No' : 'Yes'}</p>
-                <button onClick={handleAdopt}>Adopt</button>
+                <button onClick={handleAdopt} disabled={hasAdopted}>Adopt</button>
                 <button onClick={handleFoster}>Foster</button>
-                <button onClick={handleReturnFoster}>Return Foster</button>
+                <button onClick={handleDeleteFoster}>Return Foster</button>
             </div>
         </>
     );
-
 }
