@@ -53,13 +53,20 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             Email = "rachelmdominie@example.com",
             PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "password")
         },
-            new IdentityUser
-            {
-                Id = "9012ijkl-0829-4ac5-a3ed-180f5e916a5f",
-                UserName = "ElizabethS",
-                Email = "elizabethspencer@example.com",
-                PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "password")
-            }
+        new IdentityUser
+        {
+            Id = "9012ijkl-0829-4ac5-a3ed-180f5e916a5f",
+            UserName = "ElizabethS",
+            Email = "elizabethspencer@example.com",
+            PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "password")
+        },
+        new IdentityUser
+        {
+            Id = "2013iqkp-0829-4ac5-a3ed-180f5e916a5f",
+            UserName = "MattS",
+            Email = "mattspencer@example.com",
+            PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "password")
+        }
         );
 
         modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
@@ -76,6 +83,11 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
         {
             RoleId = "abcdefgh-0829-4ac5-a3ed-180f5e916a5f",
             UserId = "9012ijkl-0829-4ac5-a3ed-180f5e916a5f"
+        },
+        new IdentityUserRole<string>
+        {
+            RoleId = "abcdefgh-0829-4ac5-a3ed-180f5e916a5f",
+            UserId = "2013iqkp-0829-4ac5-a3ed-180f5e916a5f"
         });
 
         modelBuilder.Entity<UserProfile>().HasData(new UserProfile
@@ -99,16 +111,27 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             Employee = false,
             IdentityUserId = "5678efgh-0829-4ac5-a3ed-180f5e916a5f"
         },
-            new UserProfile
-            {
-                Id = 3,
-                FullName = "Elizabeth Spencer",
-                Email = "elizabethspencer@example.com",
-                Address = "456 Main Street",
-                UserName = "ElizabethS",
-                Employee = false,
-                IdentityUserId = "9012ijkl-0829-4ac5-a3ed-180f5e916a5f"
-            }
+        new UserProfile
+        {
+            Id = 3,
+            FullName = "Elizabeth Spencer",
+            Email = "elizabethspencer@example.com",
+            Address = "456 Main Street",
+            UserName = "ElizabethS",
+            Employee = false,
+            IdentityUserId = "9012ijkl-0829-4ac5-a3ed-180f5e916a5f"
+        },
+        new UserProfile
+        {
+            Id = 4,
+            FullName = "Matt Spencer",
+            Email = "mattspencer@example.com",
+            Address = "456 Main Street",
+            UserName = "MattS",
+            Employee = false,
+            IdentityUserId = "2013iqkp-0829-4ac5-a3ed-180f5e916a5f"
+
+        }
         );
 
         modelBuilder.Entity<Animal>().HasData(new Animal
@@ -701,7 +724,7 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             Foster = false,
             AnimalId = 5,
             UserProfileId = 3,
-            TimeOfAdoption = new DateTime(2023, 8, 3),
+            TimeOfAdoption = new DateTime(2023, 8, 3)
         },
         new Adopted
         {
@@ -709,6 +732,87 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             Foster = true,
             AnimalId = 6,
             UserProfileId = 2
+        },
+        new Adopted
+        {
+            Id = 5,
+            Foster = true,
+            AnimalId = 8,
+            UserProfileId = 3
+        },
+        new Adopted
+        {
+            Id = 6,
+            Foster = true,
+            AnimalId = 13,
+            UserProfileId = 3
+        },
+        new Adopted
+        {
+            Id = 7,
+            Foster = true,
+            AnimalId = 16,
+            UserProfileId = 2
+        },
+        new Adopted
+        {
+            Id = 8,
+            Foster = true,
+            AnimalId = 17,
+            UserProfileId = 4
+        },
+        new Adopted
+        {
+            Id = 9,
+            Foster = true,
+            AnimalId = 20,
+            UserProfileId = 4
+        },
+        new Adopted
+        {
+            Id = 10,
+            Foster = true,
+            AnimalId = 23,
+            UserProfileId = 4
+        },
+        new Adopted
+        {
+            Id = 11,
+            Foster = true,
+            AnimalId = 30,
+            UserProfileId = 4
+        },
+        new Adopted
+        {
+            Id = 12,
+            Foster = false,
+            AnimalId = 9,
+            UserProfileId = 4,
+            TimeOfAdoption = new DateTime(2024, 8, 3)
+        },
+        new Adopted
+        {
+            Id = 13,
+            Foster = false,
+            AnimalId = 11,
+            UserProfileId = 4,
+            TimeOfAdoption = new DateTime(2023, 8, 4)
+        },
+        new Adopted
+        {
+            Id = 14,
+            Foster = false,
+            AnimalId = 15,
+            UserProfileId = 3,
+            TimeOfAdoption = new DateTime(2023, 11, 4)
+        },
+        new Adopted
+        {
+            Id = 15,
+            Foster = false,
+            AnimalId = 29,
+            UserProfileId = 4,
+            TimeOfAdoption = new DateTime(2024, 1, 2)
         });
     }
 }

@@ -41,7 +41,7 @@ export const getAnimalById = (id) => {
 };
 
 export const updateAnimalAvailability = (animalId) => {
-    return fetch(`${_apiUrl}/${animalId}`, {
+    return fetch(`${_apiUrl}/updateAvailability/${animalId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -49,3 +49,27 @@ export const updateAnimalAvailability = (animalId) => {
         body: JSON.stringify(animalId),
     });
 };
+
+export const updateAnimalFostered = (animalId) => {
+    return fetch(`${_apiUrl}/updateFoster/${animalId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(animalId),
+    });
+};
+
+
+export const deleteAnimalFostered = (animalId) => {
+    return fetch(`${_apiUrl}/updateUnfosterAdopt/${animalId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(animalId),
+    });
+};
+
+
+
