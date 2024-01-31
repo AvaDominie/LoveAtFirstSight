@@ -16,3 +16,5 @@ public class Adopted
     public UserProfile UserProfile { get; set; }
     public DateTime TimeOfAdoption { get; set; }
 }
+
+
