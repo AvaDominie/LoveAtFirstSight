@@ -6,9 +6,9 @@ import Home from "./Home";
 import Dogs from "./animals/Dogs";
 import Cats from "./animals/Cats";
 import AnimalDetails from "./animals/AnimalDetails";
-import UserProfile from "./userProfile/UserProfile";
 import UserProfileDetails from "./userProfile/UserProfileDetails";
 import EditUserProfile from "./userProfile/EditUserProfile";
+import AddAnimal from "./animals/AddAnimal";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -27,7 +27,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     path="dogs"
                     element={
                         <AuthorizedRoute loggedInUser={loggedInUser}>
-                            <Dogs />
+                            <Dogs loggedInUser={loggedInUser}/>
                         </AuthorizedRoute>
                     }
                 />
@@ -35,7 +35,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     path="cats"
                     element={
                         <AuthorizedRoute loggedInUser={loggedInUser}>
-                            <Cats />
+                            <Cats loggedInUser={loggedInUser}/>
                         </AuthorizedRoute>
                     }
                 />
@@ -60,6 +60,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     element={
                         <AuthorizedRoute loggedInUser={loggedInUser}>
                             <EditUserProfile loggedInUser={loggedInUser} />
+                        </AuthorizedRoute>
+                    }
+                />
+                <Route
+                    path="addAnimal"
+                    element={
+                        <AuthorizedRoute roles={["Employee"]} loggedInUser={loggedInUser}>
+                            <AddAnimal loggedInUser={loggedInUser} />
                         </AuthorizedRoute>
                     }
                 />

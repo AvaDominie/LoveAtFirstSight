@@ -9,5 +9,5 @@ public class BreedDTO
     [Required]
     public string Name { get; set; }
     public bool IsDog { get; set; }
-    public List<AnimalBreedDTO> AnimalBreeds { get; set; }
+    public List<AnimalBreedDTO>? AnimalBreeds { get; set; }
 }

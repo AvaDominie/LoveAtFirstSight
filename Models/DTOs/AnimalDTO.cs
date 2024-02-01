@@ -21,6 +21,6 @@ public class AnimalDTO
     public DateTime DateAdded { get; set; }
     [Required]
     public string UrlPic { get; set; }
-    public List<AnimalBreedDTO> AnimalBreeds { get; set; }
-    public List<AdoptedDTO> Adoptions { get; set; }
+    public List<AnimalBreedDTO>? AnimalBreeds { get; set; }
+    public List<AdoptedDTO>? Adoptions { get; set; }
 }

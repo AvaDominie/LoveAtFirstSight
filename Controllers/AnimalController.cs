@@ -494,4 +494,59 @@ public class AnimalController : ControllerBase
 
 
 
+
+    // employee add animal
+    [HttpPost("addAnimal")]
+    [Authorize(Roles = "Employee")]
+    public IActionResult AddAnimal(AnimalDTO animalDTO)
+    {
+        Animal animal = new Animal
+        {
+            IsDog = animalDTO.IsDog,
+            IsMale = animalDTO.IsMale,
+            Name = animalDTO.Name,
+            Age = animalDTO.Age,
+            Available = true,
+            Fostered = false,
+            DateAdded = DateTime.Now,
+            UrlPic = animalDTO.UrlPic
+        };
+
+        // Create AnimalBreed entities for each breed in the AnimalDTO
+        foreach (var breedDTO in animalDTO.AnimalBreeds)
+        {
+            AnimalBreed animalBreed = new AnimalBreed
+            {
+                AnimalId = animal.Id,
+                BreedId = breedDTO.BreedId
+            };
+
+            // Add the AnimalBreed entity to the Animal's AnimalBreeds list
+            animal.AnimalBreeds.Add(animalBreed);
+        }
+
+        _dbContext.Animals.Add(animal);
+        _dbContext.SaveChanges();
+
+        return Created($"/api/animal/{animal.Id}", animal);
+    }
+
+
 }
+
+// swagger add dog outline 
+// {
+//   "isDog": true,
+//   "isMale": false,
+//   "name": "Olive",
+//   "age": 3,
+//   "available": true,
+//   "fostered": true,
+//   "dateAdded": "2024-02-01T19:53:56.363Z",
+//   "urlPic": "https://i.pinimg.com/736x/c3/a2/b2/c3a2b213b512578f2f10d051e5cbdc72.jpg",
+//   "animalBreeds": [
+//     {
+//       "breedId": 5
+//     }
+//   ]
+// }
