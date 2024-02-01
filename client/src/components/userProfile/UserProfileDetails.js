@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function UserProfileDetails({ loggedInUser }) {
     const [user, setUser] = useState(null);
-    
+
     let uniqueAnimalIds = [];
 
     const getUserId = loggedInUser.id;
@@ -21,6 +21,7 @@ export default function UserProfileDetails({ loggedInUser }) {
             {user ? (
                 <>
                     <p>Full Name: {user.fullName}</p>
+                    <p>Username: {user.userName}</p>
                     <p>Email: {user.email}</p>
                     <p>Address: {user.address}</p>
 
@@ -66,6 +67,10 @@ export default function UserProfileDetails({ loggedInUser }) {
             ) : (
                 <p>Loading...</p>
             )}
+            <Link to={`/editUserProfile/${getUserId}`} >
+                <button>Edit</button>
+            </Link>
+
         </div>
     );
 }

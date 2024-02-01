@@ -15,9 +15,9 @@ public class UserProfile
     [Required]
     public string UserName { get; set; }
     [Required]
-    public bool Employee { get; set; }
+    public bool? Employee { get; set; }
     [Required]
-    public string IdentityUserId { get; set; }
+    public string? IdentityUserId { get; set; }
     public IdentityUser IdentityUser { get; set; }
     public List<Adopted> Adoptions { get; set; }
 }
