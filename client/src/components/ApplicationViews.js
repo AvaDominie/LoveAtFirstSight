@@ -8,6 +8,7 @@ import Cats from "./animals/Cats";
 import AnimalDetails from "./animals/AnimalDetails";
 import UserProfile from "./userProfile/UserProfile";
 import UserProfileDetails from "./userProfile/UserProfileDetails";
+import EditUserProfile from "./userProfile/EditUserProfile";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -55,6 +56,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     }
                 />
                 <Route
+                    path="editUserProfile/:userId"
+                    element={
+                        <AuthorizedRoute loggedInUser={loggedInUser}>
+                            <EditUserProfile loggedInUser={loggedInUser} />
+                        </AuthorizedRoute>
+                    }
+                />
+                <Route
                     path="login"
                     element={<Login setLoggedInUser={setLoggedInUser} />}
                 />
@@ -67,3 +76,5 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         </Routes>
     );
 }
+
+

@@ -83,7 +83,32 @@ public class UserProfileController : ControllerBase
     }
 
 
+    // update users profile 
+    [HttpPut("{id}")]
+    [Authorize]
+    public IActionResult EditUserProfile(int id, [FromBody] UserProfileDTO userProfileDTO)
+    {
+        // find the user
+        UserProfile userProfile = _dbContext.UserProfiles.Find(id);
 
+        // check if user exists
+        if (userProfile == null)
+        {
+            return NotFound();
+        }
+
+        // update user
+        userProfile.FullName = userProfileDTO.FullName;
+        userProfile.Email = userProfileDTO.Email;
+        userProfile.Address = userProfileDTO.Address;
+        userProfile.UserName = userProfileDTO.UserName;
+
+        // save
+        _dbContext.SaveChanges();
+
+        return NoContent();
+
+    }
 
 
 
