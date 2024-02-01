@@ -9,5 +9,5 @@ public class Breed
     [Required]
     public string Name { get; set; }
     public bool IsDog { get; set; }
-    public List<AnimalBreed> AnimalBreeds { get; set; }
+    public List<AnimalBreed>? AnimalBreeds { get; set; }
 }

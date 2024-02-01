@@ -310,7 +310,7 @@ namespace LoveAtFirstSight.Migrations
                 values: new object[,]
                 {
                     { "abcdefgh-0829-4ac5-a3ed-180f5e916a5f", null, "User", "user" },
-                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", null, "Admin", "admin" }
+                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", null, "Employee", "employee" }
                 });
 
             migrationBuilder.InsertData(
@@ -318,10 +318,10 @@ namespace LoveAtFirstSight.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "2013iqkp-0829-4ac5-a3ed-180f5e916a5f", 0, "81ecf115-bf71-4752-83b9-5891afb82065", "mattspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEJwgQNdkBGKF+i0chea8uVAbBgfIBuciT7fMWauxVAOMYX6dvFyZXIF2cM/QdWso7g==", null, false, "7ba684c7-8397-478a-8514-10e1615808ba", false, "MattS" },
-                    { "5678efgh-0829-4ac5-a3ed-180f5e916a5f", 0, "81f7bee7-13ff-465a-a4e4-44921720f45b", "rachelmdominie@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEB48JWLx++5glS9Z/nnkJp/x1VzKROpkL4XeYx4d6PpLHt/JGhtSp4egSuZuBNAeKw==", null, false, "60526c47-54e4-4203-b855-78f9e5bf3c4a", false, "RachelD" },
-                    { "9012ijkl-0829-4ac5-a3ed-180f5e916a5f", 0, "639ec9d7-b9be-4d4c-addb-452659709d33", "elizabethspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEAlvVbc+STFTIoY2yhi+MffwQw/XaMK+E2RxnCy/K9HajwXgvkwU8xux2kvWgAKDeA==", null, false, "69c8c235-f616-4554-b3d4-51ffe6d8fd58", false, "ElizabethS" },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "5409ac94-921f-4156-8b13-741be290dde6", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEKfTJ4MHCGEd4jOACOIzfHtxhM0O1iPyik0UWH+j6ad1HclpCVVwKRYliutktD1E9Q==", null, false, "092cb7b5-1b41-45ca-8298-aaf68bab6f08", false, "Administrator" }
+                    { "2013iqkp-0829-4ac5-a3ed-180f5e916a5f", 0, "78b357b1-6aa1-4fb9-aa35-26fd79547ae0", "mattspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEL0fdwPRKRq/T9OG+w0JUPkRJQuKlX43km8sgFrJd2Fv0J+oUSaqN2UULEp5Oo9+Hw==", null, false, "a55b7ef9-c657-47c2-bf4c-b89a2ea32ff6", false, "MattS" },
+                    { "5678efgh-0829-4ac5-a3ed-180f5e916a5f", 0, "4b0a97c8-ffca-4f99-8a37-ac7797e3e192", "rachelmdominie@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAED5PI+MN0RK6BkP6qQ5nRII79xNq7FBoG+m29xAgyfBb3exKqJCiyVF0bjppl56LwA==", null, false, "87fe7821-127e-4095-8a82-d6b0b0c2170e", false, "RachelD" },
+                    { "9012ijkl-0829-4ac5-a3ed-180f5e916a5f", 0, "baf9ef38-26fa-4648-bf0d-5c20087e753e", "elizabethspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEM0QH6BfZ8NZlrY9QWOv0K+c3+us1Z86k6pivu3yB4p6rCs43VXeB01iLqOk2Edv/Q==", null, false, "bae1e55a-4505-475f-a277-05f310f5c963", false, "ElizabethS" },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "b29b3c6a-ee3c-42b0-b8b7-aca73ec7f6bb", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEAMRg/cLTPTwKdCZc9b5p3fft97v8LI0zLw7ukAYcO4c+PIbQjrwh+8vYXNuLlsJTA==", null, false, "8dfda1d5-2544-40d8-b51e-3a49c2bcb4e3", false, "Administrator" }
                 });
 
             migrationBuilder.InsertData(

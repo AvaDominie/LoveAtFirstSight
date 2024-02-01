@@ -22,7 +22,7 @@ public class Animal
     public DateTime DateAdded { get; set; }
     [Required]
     public string UrlPic { get; set; }
-    public List<AnimalBreed> AnimalBreeds { get; set; }
-    public List<Adopted> Adoptions { get; set; }
+    public List<AnimalBreed>? AnimalBreeds { get; set; } = new List<AnimalBreed>();
+    public List<Adopted>? Adoptions { get; set; }
 }
 
