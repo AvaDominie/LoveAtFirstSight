@@ -72,4 +72,15 @@ export const deleteAnimalFostered = (animalId) => {
 };
 
 
+export const addAnimal = (addedAnimal) => {
+    debugger
+    return fetch(`${_apiUrl}/addAnimal`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(addedAnimal),
+    }).then((res) => res);
+};
+
 
