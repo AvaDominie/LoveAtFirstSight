@@ -15,7 +15,7 @@ export default function EditUserProfile({ loggedInUser }) {
 
     const getUserId = loggedInUser.id;
 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         getUserProfileById(getUserId).then(setUser);
@@ -34,7 +34,7 @@ export default function EditUserProfile({ loggedInUser }) {
         }
 
         editUserProfile(getUserId, updatedUserObject).then(() => {
-            // navigate(`/profile`)
+            navigate(`/profile`)
         });
     };
 

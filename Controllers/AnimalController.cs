@@ -512,20 +512,28 @@ public class AnimalController : ControllerBase
             UrlPic = animalDTO.UrlPic
         };
 
-        // Create AnimalBreed entities for each breed in the AnimalDTO
-        foreach (var breedDTO in animalDTO.AnimalBreeds)
-        {
-            AnimalBreed animalBreed = new AnimalBreed
-            {
-                AnimalId = animal.Id,
-                BreedId = breedDTO.BreedId
-            };
 
-            // Add the AnimalBreed entity to the Animal's AnimalBreeds list
-            animal.AnimalBreeds.Add(animalBreed);
-        }
+
+
+        // Add the AnimalBreed entities to the Animal's AnimalBreeds list
 
         _dbContext.Animals.Add(animal);
+        _dbContext.SaveChanges();
+
+        if (animalDTO.AnimalBreeds != null)
+        {
+            foreach (var animalBreedDTO in animalDTO.AnimalBreeds)
+            {
+                AnimalBreed animalBreed = new AnimalBreed
+                {
+                    AnimalId = animal.Id,
+                    BreedId = animalBreedDTO.BreedId
+                };
+                _dbContext.AnimalBreeds.Add(animalBreed);
+
+            }
+        }
+
         _dbContext.SaveChanges();
 
         return Created($"/api/animal/{animal.Id}", animal);
@@ -547,6 +555,22 @@ public class AnimalController : ControllerBase
 //   "animalBreeds": [
 //     {
 //       "breedId": 5
+//     }
+//   ]
+// // }
+// {
+//   "isDog": true,
+//   "isMale": true,
+//   "name": "Red",
+//   "age": 2,
+//   "available": true,
+//   "fostered": true,
+//   "dateAdded": "2024-02-02T16:34:38.895Z",
+//   "urlPic": "https://i.pinimg.com/564x/41/9a/7d/419a7d66b4805f1fde315f494d59776d.jpg",
+//   "animalBreeds": [
+//     {
+//      breedId": 1,
+
 //     }
 //   ]
 // }
