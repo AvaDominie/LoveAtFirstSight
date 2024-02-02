@@ -494,7 +494,6 @@ public class AnimalController : ControllerBase
 
 
 
-
     // employee add animal
     [HttpPost("addAnimal")]
     [Authorize(Roles = "Employee")]
@@ -511,8 +510,6 @@ public class AnimalController : ControllerBase
             DateAdded = DateTime.Now,
             UrlPic = animalDTO.UrlPic
         };
-
-
 
 
         // Add the AnimalBreed entities to the Animal's AnimalBreeds list
@@ -540,24 +537,65 @@ public class AnimalController : ControllerBase
     }
 
 
+    // employee update animal
+    [HttpPut("addAnimal")]
+    [Authorize(Roles = "Employee")]
+    public IActionResult UpdateAnimal(int animalId, [FromBody] AnimalDTO updateAnimal)
+    {
+        Animal animaltoUpdate = _dbContext.Animals
+        .Include(a => a.AnimalBreeds)
+        .SingleOrDefault(up => up.Id == animalId);
+
+
+        // check if user exists
+        if (animaltoUpdate == null)
+        {
+            return NotFound();
+        }
+        else if (animalId != animaltoUpdate.Id)
+        {
+            return BadRequest();
+        }
+
+        // update animal
+        animaltoUpdate.IsDog = updateAnimal.IsDog;
+        animaltoUpdate.IsMale = updateAnimal.IsMale;
+        animaltoUpdate.Name = updateAnimal.Name;
+        animaltoUpdate.Age = updateAnimal.Age;
+        animaltoUpdate.UrlPic = updateAnimal.UrlPic;
+
+
+
+        // Update AnimalBreeds
+        if (updateAnimal.AnimalBreeds != null)
+        {
+            // Remove existing AnimalBreeds
+            _dbContext.AnimalBreeds.RemoveRange(animaltoUpdate.AnimalBreeds);
+
+            // Add new AnimalBreeds
+            foreach (var animalBreedDTO in updateAnimal.AnimalBreeds)
+            {
+                AnimalBreed animalBreed = new AnimalBreed
+                {
+                    AnimalId = animaltoUpdate.Id,
+                    BreedId = animalBreedDTO.BreedId
+                };
+                _dbContext.AnimalBreeds.Add(animalBreed);
+            }
+        }
+
+
+        _dbContext.SaveChanges();
+
+        return NoContent();
+
+    }
+
+
+
 }
 
 // swagger add dog outline 
-// {
-//   "isDog": true,
-//   "isMale": false,
-//   "name": "Olive",
-//   "age": 3,
-//   "available": true,
-//   "fostered": true,
-//   "dateAdded": "2024-02-01T19:53:56.363Z",
-//   "urlPic": "https://i.pinimg.com/736x/c3/a2/b2/c3a2b213b512578f2f10d051e5cbdc72.jpg",
-//   "animalBreeds": [
-//     {
-//       "breedId": 5
-//     }
-//   ]
-// // }
 // {
 //   "isDog": true,
 //   "isMale": true,
@@ -569,7 +607,7 @@ public class AnimalController : ControllerBase
 //   "urlPic": "https://i.pinimg.com/564x/41/9a/7d/419a7d66b4805f1fde315f494d59776d.jpg",
 //   "animalBreeds": [
 //     {
-//      breedId": 1,
+//      "breedId": 1
 
 //     }
 //   ]

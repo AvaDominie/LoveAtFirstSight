@@ -73,7 +73,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     }
                 />
                 <Route
-                    path="editAnimal"
+                    path="editAnimal/:animalId"
                     element={
                         <AuthorizedRoute roles={["Employee"]} loggedInUser={loggedInUser}>
                             <EditAnimal loggedInUser={loggedInUser} />

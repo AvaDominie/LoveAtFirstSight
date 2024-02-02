@@ -88,7 +88,7 @@ export default function AnimalDetails({ loggedInUser }) {
                 )}
                 {isEmployee && (
                     <div>
-                        <Link to={`/editAnimal`}>
+                        <Link to={`/editAnimal/${animal.id}`}>
                             <button>Edit</button>
                         </Link>
                         <button onClick={handleAdopt}>Delete</button>
@@ -98,3 +98,6 @@ export default function AnimalDetails({ loggedInUser }) {
         </>
     );
 }
+
+
+
