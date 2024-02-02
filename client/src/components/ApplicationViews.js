@@ -9,6 +9,7 @@ import AnimalDetails from "./animals/AnimalDetails";
 import UserProfileDetails from "./userProfile/UserProfileDetails";
 import EditUserProfile from "./userProfile/EditUserProfile";
 import AddAnimal from "./animals/AddAnimal";
+import EditAnimal from "./animals/EditAnimal";
 
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
@@ -68,6 +69,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
                     element={
                         <AuthorizedRoute roles={["Employee"]} loggedInUser={loggedInUser}>
                             <AddAnimal loggedInUser={loggedInUser} />
+                        </AuthorizedRoute>
+                    }
+                />
+                <Route
+                    path="editAnimal"
+                    element={
+                        <AuthorizedRoute roles={["Employee"]} loggedInUser={loggedInUser}>
+                            <EditAnimal loggedInUser={loggedInUser} />
                         </AuthorizedRoute>
                     }
                 />
