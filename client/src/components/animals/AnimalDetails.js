@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { deleteAnimalFostered, getAnimalById, updateAnimalAvailability, updateAnimalFostered } from "../../managers/AnimalManager";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { createAdoption, createFoster, deleteFoster } from "../../managers/AdoptManager";
 
 
@@ -8,10 +8,11 @@ import { createAdoption, createFoster, deleteFoster } from "../../managers/Adopt
 
 export default function AnimalDetails({ loggedInUser }) {
     const [animal, setAnimal] = useState(null);
-    const [hasAdopted, setHasAdopted] = useState(false); 
+    const [hasAdopted, setHasAdopted] = useState(false);
     const { animalId } = useParams();
 
-
+    const isEmployee = loggedInUser?.roles?.includes("Employee");
+    const isUser = loggedInUser?.roles?.includes("User");
 
 
     const getAnimalDetails = (id) => {
@@ -20,11 +21,11 @@ export default function AnimalDetails({ loggedInUser }) {
 
     const handleAdopt = () => {
         // Check if the animal has not been adopted already
-        if (!hasAdopted) { 
+        if (!hasAdopted) {
             createAdoption(animalId, loggedInUser.id);
             // Set the state to indicate that the animal has been adopted
             updateAnimalAvailability(animalId);
-            setHasAdopted(true); 
+            setHasAdopted(true);
         }
     }
 
@@ -53,7 +54,7 @@ export default function AnimalDetails({ loggedInUser }) {
     }, [animalId])
 
 
-    
+
     if (!animal) {
         return (
             <>
@@ -78,10 +79,25 @@ export default function AnimalDetails({ loggedInUser }) {
                 <p>Date Added: {new Date(animal.dateAdded).toLocaleDateString('en-CA')}</p>
                 <p>Currently being Fostered: {animal.fostered ? 'Yes' : 'No'}</p>
                 <p>Adopted: {animal.available ? 'No' : 'Yes'}</p>
-                <button onClick={handleAdopt} disabled={hasAdopted}>Adopt</button>
-                <button onClick={handleFoster}>Foster</button>
-                <button onClick={handleDeleteFoster}>Return Foster</button>
+                {isUser && (
+                    <div>
+                        <button onClick={handleAdopt} disabled={hasAdopted}>Adopt</button>
+                        <button onClick={handleFoster}>Foster</button>
+                        <button onClick={handleDeleteFoster}>Return Foster</button>
+                    </div>
+                )}
+                {isEmployee && (
+                    <div>
+                        <Link to={`/editAnimal/${animal.id}`}>
+                            <button>Edit</button>
+                        </Link>
+                        <button onClick={handleAdopt}>Delete</button>
+                    </div>
+                )}
             </div>
         </>
     );
 }
+
+
+
