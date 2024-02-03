@@ -538,14 +538,13 @@ public class AnimalController : ControllerBase
 
 
     // employee update animal
-    [HttpPut("addAnimal")]
+    [HttpPut("updateAnimal/{animalId}")]
     [Authorize(Roles = "Employee")]
     public IActionResult UpdateAnimal(int animalId, [FromBody] AnimalDTO updateAnimal)
     {
         Animal animaltoUpdate = _dbContext.Animals
-        .Include(a => a.AnimalBreeds)
-        .SingleOrDefault(up => up.Id == animalId);
-
+            .Include(a => a.AnimalBreeds)
+            .SingleOrDefault(up => up.Id == animalId);
 
         // check if user exists
         if (animaltoUpdate == null)
@@ -557,22 +556,19 @@ public class AnimalController : ControllerBase
             return BadRequest();
         }
 
-        // update animal
+        // Remove existing AnimalBreeds
+        _dbContext.AnimalBreeds.RemoveRange(animaltoUpdate.AnimalBreeds);
+
+        // Update animal
         animaltoUpdate.IsDog = updateAnimal.IsDog;
         animaltoUpdate.IsMale = updateAnimal.IsMale;
         animaltoUpdate.Name = updateAnimal.Name;
         animaltoUpdate.Age = updateAnimal.Age;
         animaltoUpdate.UrlPic = updateAnimal.UrlPic;
 
-
-
-        // Update AnimalBreeds
+        // Add new AnimalBreeds
         if (updateAnimal.AnimalBreeds != null)
         {
-            // Remove existing AnimalBreeds
-            _dbContext.AnimalBreeds.RemoveRange(animaltoUpdate.AnimalBreeds);
-
-            // Add new AnimalBreeds
             foreach (var animalBreedDTO in updateAnimal.AnimalBreeds)
             {
                 AnimalBreed animalBreed = new AnimalBreed
@@ -584,13 +580,38 @@ public class AnimalController : ControllerBase
             }
         }
 
+        _dbContext.SaveChanges();
 
+        return NoContent();
+    }
+
+
+
+    // delete animal
+    [HttpDelete("deleteAnimal/{animalId}")]
+    [Authorize(Roles = "Employee")]
+    public IActionResult DeleteAnimal([FromRoute] int animalId)
+    {
+        Animal animal = _dbContext.Animals
+            .Include(a => a.AnimalBreeds)
+            .FirstOrDefault(a => a.Id == animalId);
+
+        // Check if adoption exists
+        if (animal == null)
+        {
+            return NotFound();
+        }
+
+        // Remove the associated AnimalBreeds
+        _dbContext.AnimalBreeds.RemoveRange(animal.AnimalBreeds);
+
+        // Remove the animal record
+        _dbContext.Animals.Remove(animal);
         _dbContext.SaveChanges();
 
         return NoContent();
 
     }
-
 
 
 }

@@ -73,7 +73,6 @@ export const deleteAnimalFostered = (animalId) => {
 
 
 export const addAnimal = (addedAnimal) => {
-    debugger
     return fetch(`${_apiUrl}/addAnimal`, {
         method: "POST",
         headers: {
@@ -82,5 +81,16 @@ export const addAnimal = (addedAnimal) => {
         body: JSON.stringify(addedAnimal),
     }).then((res) => res);
 };
+
+
+export const updateAnimal = (animalId, updatedAnimal) => {
+    return fetch(`${_apiUrl}/updateAnimal/${animalId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedAnimal),
+    })
+}
 
 
