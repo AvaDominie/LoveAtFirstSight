@@ -39,7 +39,9 @@ export default function AnimalDetails({ loggedInUser }) {
         deleteAnimalFostered(animalId);
     }
 
+    const handleDelete = () => {
 
+    }
 
 
 
@@ -91,7 +93,7 @@ export default function AnimalDetails({ loggedInUser }) {
                         <Link to={`/editAnimal/${animal.id}`}>
                             <button>Edit</button>
                         </Link>
-                        <button onClick={handleAdopt}>Delete</button>
+                        <button onClick={handleDelete}>Delete</button>
                     </div>
                 )}
             </div>
