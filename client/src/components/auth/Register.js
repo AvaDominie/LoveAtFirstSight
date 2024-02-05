@@ -4,8 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
 
 export default function Register({ setLoggedInUser }) {
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [fullName, setfullName] = useState("");
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [address, setAddress] = useState("");
@@ -24,8 +23,7 @@ export default function Register({ setLoggedInUser }) {
             setPasswordMismatch(true);
         } else {
             const newUser = {
-                firstName,
-                lastName,
+                fullName,
                 userName,
                 email,
                 address,
@@ -46,22 +44,12 @@ export default function Register({ setLoggedInUser }) {
         <div className="container" style={{ maxWidth: "500px" }}>
             <h3>Sign Up</h3>
             <FormGroup>
-                <Label>First Name</Label>
+                <Label>Full Name</Label>
                 <Input
                     type="text"
-                    value={firstName}
+                    value={fullName}
                     onChange={(e) => {
-                        setFirstName(e.target.value);
-                    }}
-                />
-            </FormGroup>
-            <FormGroup>
-                <Label>Last Name</Label>
-                <Input
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => {
-                        setLastName(e.target.value);
+                        setfullName(e.target.value);
                     }}
                 />
             </FormGroup>
