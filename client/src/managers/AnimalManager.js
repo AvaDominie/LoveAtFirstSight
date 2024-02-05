@@ -84,14 +84,15 @@ export const addAnimal = (addedAnimal) => {
 
 
 export const updateAnimal = (animalId, updatedAnimal) => {
+    
     return fetch(`${_apiUrl}/updateAnimal/${animalId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedAnimal),
-    })
-}
+    }).then((res) => res);
+};
 
 
 export const deleteAnimal = (animalId) => {
