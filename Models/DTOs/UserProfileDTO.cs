@@ -12,10 +12,8 @@ public class UserProfileDTO
     public string? Email { get; set; }
     [Required]
     public string? Address { get; set; }
-    [Required]
     public string? UserName { get; set; }
     public List<string>? Roles { get; set; }
-    [Required]
     public bool? Employee { get; set; }
     [Required]
     public string? IdentityUserId { get; set; }

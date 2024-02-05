@@ -11,7 +11,7 @@ export default function EditAnimal() {
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
     const [urlPic, setUrlPic] = useState("");
-    const [selectedBreeds, setSelectedBreeds] = useState([]); 
+    const [selectedBreeds, setSelectedBreeds] = useState([]);
     const [breeds, setBreeds] = useState([]);
 
     const navigate = useNavigate();
@@ -59,14 +59,32 @@ export default function EditAnimal() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+    
+
+        var isMale = gender;
+        if (isMale === "male") {
+            isMale = true;
+        } else {
+            isMale = false
+        }
+        var isDog = animalType;
+        if (isDog === "dog") {
+            isDog = true;
+        } else {
+            isDog = false
+        }
+
+        var animalBreeds = selectedBreeds.map((animalBreed) => {
+            return {"breedId": animalBreed};
+        } )
 
         const updatedAnimal = {
-            animalType,
-            gender,
+            isDog,
+            isMale,
             name,
             age,
             urlPic,
-            selectedBreeds,
+            animalBreeds,
         };
 
         // Call the updateAnimal function to send the data to the server
@@ -85,7 +103,7 @@ export default function EditAnimal() {
                 // Handle unexpected errors
                 console.error("An unexpected error occurred:", error);
             });
-            navigate(`/`)
+        navigate(`/`)
     };
     return (
         <div>

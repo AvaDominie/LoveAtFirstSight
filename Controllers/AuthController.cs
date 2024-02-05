@@ -8,7 +8,7 @@ using System.Text;
 using LoveAtFirstSight.Models;
 using LoveAtFirstSight.Models.DTOs;
 using LoveAtFirstSight.Data;
-using HouseRules.Models.DTOs;
+
 
 namespace LoveAtFirstSight.Controllers;
 
@@ -140,7 +140,9 @@ public class AuthController : ControllerBase
                 FullName = registration.FullName,
                 Address = registration.Address,
                 Email = registration.Email,
+                UserName = registration.UserName,
                 IdentityUserId = user.Id,
+                Employee = false
             });
             _dbContext.SaveChanges();
 

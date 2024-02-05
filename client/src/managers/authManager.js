@@ -26,14 +26,14 @@ export const tryGetLoggedInUser = () => {
     });
 };
 
-export const register = (user) => {
-    user.password = btoa(user.password);
+export const register = (userProfile) => {
+    userProfile.password = btoa(userProfile.password);
     return fetch(_apiUrl + "/register", {
         credentials: "same-origin",
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify(userProfile),
     }).then(() => tryGetLoggedInUser());
 };
