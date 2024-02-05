@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { deleteAnimalFostered, getAnimalById, updateAnimalAvailability, updateAnimalFostered } from "../../managers/AnimalManager";
-import { Link, useParams } from "react-router-dom";
+import { deleteAnimal, deleteAnimalFostered, getAnimalById, updateAnimalAvailability, updateAnimalFostered } from "../../managers/AnimalManager";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { createAdoption, createFoster, deleteFoster } from "../../managers/AdoptManager";
 
 
@@ -14,6 +14,7 @@ export default function AnimalDetails({ loggedInUser }) {
     const isEmployee = loggedInUser?.roles?.includes("Employee");
     const isUser = loggedInUser?.roles?.includes("User");
 
+    const navigate = useNavigate();
 
     const getAnimalDetails = (id) => {
         getAnimalById(id).then(setAnimal);
@@ -40,7 +41,8 @@ export default function AnimalDetails({ loggedInUser }) {
     }
 
     const handleDelete = () => {
-
+        deleteAnimal(animalId);
+        navigate(`/`)
     }
 
 

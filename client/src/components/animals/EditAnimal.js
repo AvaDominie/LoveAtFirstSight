@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getAnimalById, updateAnimal } from "../../managers/AnimalManager";
 import { getAllBreeds } from "../../managers/BreedManager";
 
@@ -13,6 +13,8 @@ export default function EditAnimal() {
     const [urlPic, setUrlPic] = useState("");
     const [selectedBreeds, setSelectedBreeds] = useState([]); 
     const [breeds, setBreeds] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch animal details by id and set the state
@@ -83,6 +85,7 @@ export default function EditAnimal() {
                 // Handle unexpected errors
                 console.error("An unexpected error occurred:", error);
             });
+            navigate(`/`)
     };
     return (
         <div>
