@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+* {cursor: url(http://www.rw-designer.com/cursor-extern.php?id=148581), auto !important;}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
