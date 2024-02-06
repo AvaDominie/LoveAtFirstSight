@@ -3,8 +3,18 @@ import CatList from "./CatList";
 
 
 export default function Cats({ loggedInUser }) {
-    // Check if the user has the "Employee" role
+
+    // check if the user has the "Employee" role
     const isEmployee = loggedInUser?.roles?.includes("Employee");
+
+
+    // function to scroll to the top of the page
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
 
     return (
         <div className="container">
@@ -16,6 +26,9 @@ export default function Cats({ loggedInUser }) {
                         </Link>
                     )}
                     <CatList />
+                    <div className="back-to-top" onClick={scrollToTop}>
+                        Back to Top
+                    </div>
                 </div>
             </div>
         </div>

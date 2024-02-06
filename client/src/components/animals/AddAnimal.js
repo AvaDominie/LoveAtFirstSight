@@ -46,10 +46,22 @@ export default function AddAnimal() {
     const handleSubmit = (event) => {
         event.preventDefault();
         
+        var isMale = gender;
+        if (isMale === "male") {
+            isMale = true;
+        } else {
+            isMale = false
+        }
+        var isDog = animalType;
+        if (isDog === "dog") {
+            isDog = true;
+        } else {
+            isDog = false
+        }
 
         const addedAnimal = {
-            animalType,
-            gender,
+            isDog,
+            isMale,
             name,
             age,
             urlPic,

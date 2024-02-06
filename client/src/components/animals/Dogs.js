@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
 import DogList from "./DogList";
 
-
 export default function Dogs({ loggedInUser }) {
-    // Check if the user has the "Employee" role
+
+    // check if the user has the "Employee" role
     const isEmployee = loggedInUser?.roles?.includes("Employee");
+
+    // function to scroll to the top of the page
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
 
     return (
         <div className="container">
@@ -16,12 +24,15 @@ export default function Dogs({ loggedInUser }) {
                         </Link>
                     )}
                     <DogList />
+                    
+                    <div className="back-to-top" onClick={scrollToTop}>
+                        Back to Top
+                    </div>
                 </div>
             </div>
         </div>
     );
 }
-
 
 
 
