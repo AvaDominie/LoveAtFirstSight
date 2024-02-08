@@ -22,7 +22,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
         <div>
             <Navbar color="light" light fixed="true" expand="lg" className="navbar">
                 <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
-                    <img src={"https://i.pinimg.com/736x/eb/15/f2/eb15f2958017d0410671cb19f7b72f20.jpg"} alt="Lafs Logo" width="300" height="275" />
+                    <img src={"https://i.pinimg.com/736x/eb/15/f2/eb15f2958017d0410671cb19f7b72f20.jpg"} alt="Lafs Logo" width="200" height="175" />
                 </NavbarBrand>
                 {loggedInUser ? (
                     <>
@@ -79,3 +79,6 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
         </div>
     );
 }
+
+
+

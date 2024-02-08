@@ -49,7 +49,7 @@ export default function EditUserProfile({ loggedInUser }) {
     console.log(user)
 
     return (
-        <form>
+        <form className="container">
             <h2>Edit User Profile</h2>
             {user ? (
                 <>

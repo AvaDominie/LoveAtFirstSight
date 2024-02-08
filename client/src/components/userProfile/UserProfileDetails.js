@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getUserProfileById } from "../../managers/UserProfileManager";
 import { Link } from "react-router-dom";
+import "./UserProfile.css"
 
 export default function UserProfileDetails({ loggedInUser }) {
     const [user, setUser] = useState(null);
@@ -16,15 +17,20 @@ export default function UserProfileDetails({ loggedInUser }) {
     console.log("user", user)
 
     return (
-        <div>
-            <h2>Profile Details</h2>
+        <div className="container">
+            
+            
             {user ? (
                 <>
+                <div className="profile-details">
+                <h2>Profile Details</h2>
+                <br />
+                <br />
                     <p>Full Name: {user.fullName}</p>
                     <p>Username: {user.userName}</p>
                     <p>Email: {user.email}</p>
                     <p>Address: {user.address}</p>
-
+                    </div>
                     {!loggedInUser.roles.includes("Employee") && (
                         <>
                             <h3>Adopted Animals:</h3>
@@ -70,7 +76,7 @@ export default function UserProfileDetails({ loggedInUser }) {
                 </>
             ) : (
                 <p>Loading...</p>
-            )}
+                )}
             
             
                 <Link to={`/editUserProfile/${getUserId}`} >
@@ -78,6 +84,7 @@ export default function UserProfileDetails({ loggedInUser }) {
                 </Link>
             
 
+                
         </div>
     );
 }

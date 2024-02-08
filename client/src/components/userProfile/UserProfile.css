@@ -1,0 +1,21 @@
+
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgb(247, 220, 202);
+    padding: 100px;
+    border-radius: 15px;
+}
+
+
+.profile-details {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgb(243, 236, 236);
+    padding: 50px;
+    border-radius: 15px;
+}

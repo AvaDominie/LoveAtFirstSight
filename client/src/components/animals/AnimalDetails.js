@@ -59,6 +59,7 @@ export default function AnimalDetails({ loggedInUser }) {
     console.log(loggedInUser)
     return (
         <>
+        <div className="animal">
             <h2 className="animal-details-title">Animal details</h2>
             <div className="animal-detail-container">
                 <div className="animal-item">
@@ -88,6 +89,7 @@ export default function AnimalDetails({ loggedInUser }) {
                         </div>
                     )}
                 </div>
+            </div>
             </div>
         </>
     );
