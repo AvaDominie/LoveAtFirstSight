@@ -25,7 +25,6 @@ export default function EditAnimal() {
             setName(animalData.name);
             setAge(animalData.age);
             setUrlPic(animalData.urlPic);
-            setSelectedBreeds(animalData.animalBreeds.map((breed) => breed.id));
         });
 
         // Fetch all breeds for the dropdown
@@ -106,7 +105,7 @@ export default function EditAnimal() {
     };
     console.log("animal", animal)
     return (
-        <div>
+        <div className="container">
             <h2>Edit Animal Form</h2>
             {animal ? (
                 <form onSubmit={handleSubmit}>

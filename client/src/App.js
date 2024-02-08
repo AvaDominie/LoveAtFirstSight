@@ -5,6 +5,7 @@ import { tryGetLoggedInUser } from "./managers/authManager";
 import { Spinner } from "reactstrap";
 import NavBar from "./components/NavBar";
 import ApplicationViews from "./components/ApplicationViews";
+import Footer from "./components/Footer";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState();
@@ -28,7 +29,7 @@ function App() {
         loggedInUser={loggedInUser}
         setLoggedInUser={setLoggedInUser}
       />
-      
+      <Footer loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
     </>
   );
 }

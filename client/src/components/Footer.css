@@ -1,0 +1,60 @@
+
+
+.footer {
+    background-image: linear-gradient(to top, #818181, #f9ccac); 
+    padding: 20px; /* Add padding for better spacing */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center the logos horizontally */
+}
+
+.Email {
+    width: 65px;
+    height: 65px;
+    margin: 0 10px; /* Add margin to create spacing */
+    transition: filter 0.3s; /* Smooth transition effect */
+    
+}
+
+.Ig {
+    width: 60px;
+    height: 60px;
+    margin: 0 10px; /* Add margin to create spacing */
+    transition: filter 0.3s; /* Smooth transition effect */
+}
+
+.Fb {
+    width: 60px;
+    height: 60px;
+    margin: 0 10px; /* Add margin to create spacing */
+    transition: filter 0.3s; /* Smooth transition effect */
+}
+
+.Email:hover {
+    filter: brightness(80%) invert(100%); /* Change the color to white when hovered over */
+}
+
+.Ig:hover {
+    filter: brightness(80%) invert(100%); /* Change the color to white when hovered over */
+}
+
+.Fb:hover {
+    filter: brightness(80%) invert(100%); /* Change the color to white when hovered over */
+}
+
+
+.logos {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center the content horizontally */
+}
+
+.hours {
+    text-align: center;
+}
+
+.contact {
+    text-align: center;
+}
+
+.address {
+    text-align: center;
+}

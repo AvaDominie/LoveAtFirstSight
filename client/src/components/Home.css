@@ -7,8 +7,19 @@
 .welcome {
     text-align: center;
 }
-.about-us {
+
+.about-us-title {
     text-align: center;
+}
+
+.about-us {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgb(243, 236, 236);
+    padding: 100px;
+    /* Increase the padding */
+    border-radius: 15px;
 }
 
 .slider {
@@ -17,7 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 550px; 
+    height: 650px;
     overflow: hidden;
 }
 
@@ -25,8 +36,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: 3px solid #ccc; 
+    border: 3px solid #ad4102;
     border-width: 5px;
+    border-radius: 5px;
 }
 
 .prev,
@@ -49,3 +61,19 @@
     right: 10px;
 }
 
+.container {
+
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    background-color: rgb(247, 220, 202);
+    padding: 100px;
+    border-radius: 15px;
+}
+
+.map {
+    justify-content: center;
+    border: 3px solid #ccc;
+    border-width: 5px;
+    border-radius: 5px;
+}
