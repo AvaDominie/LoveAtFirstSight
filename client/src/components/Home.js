@@ -24,7 +24,7 @@ export default function Home() {
     return (
         <div className="container">
             <br />
-            <h2>Welcome to Love At First Sight Adoption Center!</h2>
+            <h2 className="welcome">Welcome to Love At First Sight Adoption Center!</h2>
             <br />
 
             <div className="slider">

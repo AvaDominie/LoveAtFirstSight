@@ -12,9 +12,6 @@ export default function DogList() {
     const [breeds, setBreeds] = useState([]);
     const [selectedBreed, setSelectedBreed] = useState("");
 
-
-
-
     const getAllDogs = () => {
         getDogs().then(setDogs);
     };
@@ -37,9 +34,10 @@ export default function DogList() {
         setSelectedBreed(breed);
     };
 
-
     useEffect(() => {
         getAllDogs();
+        getFosterDogs();
+        getDogBreed();
     }, []);
 
     useEffect(() => {
@@ -49,10 +47,6 @@ export default function DogList() {
             getFosterDogs();
         }
     }, [selectedBreed]);
-    
-    useEffect(() => {
-        getDogBreed();
-    }, []);
 
     useEffect(() => {
         if (selectedBreed !== "") {
@@ -61,13 +55,6 @@ export default function DogList() {
             getAllDogs();
         }
     }, [selectedBreed]);
-
-
-    console.log("All Available dogs", dogs);
-    console.log("All Fostered dogs", filteredFostered);
-    console.log("All Breeds", breeds)
-    console.log("Selected breeds", selectedBreed)
-
 
     return (
         <>
@@ -85,27 +72,23 @@ export default function DogList() {
                     ))}
                 </select>
             </div>
-            {displayFostered ? filteredFostered.map((dog) => (
-                <div key={dog.id}>
-                    <p>{dog.name}</p>
-                    <Link to={`/animalDetails/${dog.id}`} >
-                    <img className="dog-picture" src={dog.urlPic} alt={dog.name} />
-                    </Link>
-                </div>
-            )) : dogs.map((dog) => (
-                <div key={dog.id}>
-                    <p>{dog.name}</p>
-                    <Link to={`/animalDetails/${dog.id}`} >
-                    <img className="dog-picture" src={dog.urlPic} alt={dog.name} />
-                </Link>
-                </div>
-            ))}
+            <div className="animal-container">
+                {displayFostered ? filteredFostered.map((dog) => (
+                    <div key={dog.id} className="animal-item">
+                        <p>{dog.name}</p>
+                        <Link to={`/animalDetails/${dog.id}`} >
+                            <img className="animal-picture" src={dog.urlPic} alt={dog.name} />
+                        </Link>
+                    </div>
+                )) : dogs.map((dog) => (
+                    <div key={dog.id} className="animal-item">
+                        <p>{dog.name}</p>
+                        <Link to={`/animalDetails/${dog.id}`} >
+                            <img className="animal-picture" src={dog.urlPic} alt={dog.name} />
+                        </Link>
+                    </div>
+                ))}
+            </div>
         </>
     );
 }
-
-
-
-
-
-

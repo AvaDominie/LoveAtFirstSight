@@ -5,6 +5,12 @@
 * {cursor: url(http://www.rw-designer.com/cursor-extern.php?id=148581), auto !important;}
 
 
+body {
+  background-image: url(background.jpg);
+  background-repeat: round;
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

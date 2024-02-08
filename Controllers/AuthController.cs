@@ -111,6 +111,7 @@ public class AuthController : ControllerBase
                 IdentityUserId = identityUserId,
                 UserName = User.FindFirstValue(ClaimTypes.Name),
                 Email = User.FindFirstValue(ClaimTypes.Email),
+                Employee = profile.Employee,
                 Roles = roles
             };
 
