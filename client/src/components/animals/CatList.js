@@ -85,21 +85,23 @@ export default function CatList() {
                     ))}
                 </select>
             </div>
+            <div className="animal-container">
             {displayFostered ? filteredFostered.map((cat) => (
-                <div key={cat.id}>
+                <div key={cat.id} className="animal-item">
                     <p>{cat.name}</p>
                     <Link to={`/animalDetails/${cat.id}`} >
-                    <img className="cat-picture" src={cat.urlPic} alt={cat.name} />
+                    <img className="animal-picture" src={cat.urlPic} alt={cat.name} />
                     </Link>
                 </div>
             )) : cats.map((cat) => (
-                <div key={cat.id}>
+                <div key={cat.id} className="animal-item">
                     <p>{cat.name}</p>
                     <Link to={`/animalDetails/${cat.id}`} >
-                    <img className="cat-picture" src={cat.urlPic} alt={cat.name} />
+                    <img className="animal-picture" src={cat.urlPic} alt={cat.name} />
                     </Link>
                 </div>
             ))}
+            </div>
         </>
     );
 }

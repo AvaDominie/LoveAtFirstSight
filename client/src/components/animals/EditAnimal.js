@@ -31,7 +31,6 @@ export default function EditAnimal() {
         // Fetch all breeds for the dropdown
         getAllBreeds().then(setBreeds);
     }, [animalId]);
-
     const handleAnimalTypeChange = (event) => {
         setAnimalType(event.target.value);
     };
@@ -86,7 +85,7 @@ export default function EditAnimal() {
             urlPic,
             animalBreeds,
         };
-
+        console.log("animalbreed", animalBreeds)
         // Call the updateAnimal function to send the data to the server
         updateAnimal(animalId, updatedAnimal)
             .then((response) => {
@@ -105,6 +104,7 @@ export default function EditAnimal() {
             });
         navigate(`/`)
     };
+    console.log("animal", animal)
     return (
         <div>
             <h2>Edit Animal Form</h2>
@@ -197,5 +197,4 @@ export default function EditAnimal() {
         </div>
     );
 }
-// currently doesn't add updated gender, animal type, or animalBreeds
-// does update name, age, and pic 
+// currently doesn't add updated  animalBreeds

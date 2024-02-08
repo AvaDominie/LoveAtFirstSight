@@ -1,19 +1,15 @@
+
+
 import { useEffect, useState } from "react"
 import { deleteAnimal, deleteAnimalFostered, getAnimalById, updateAnimalAvailability, updateAnimalFostered } from "../../managers/AnimalManager";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { createAdoption, createFoster, deleteFoster } from "../../managers/AdoptManager";
 
 
-
-
 export default function AnimalDetails({ loggedInUser }) {
     const [animal, setAnimal] = useState(null);
     const [hasAdopted, setHasAdopted] = useState(false);
     const { animalId } = useParams();
-
-    const isEmployee = loggedInUser?.roles?.includes("Employee");
-    const isUser = loggedInUser?.roles?.includes("User");
-
     const navigate = useNavigate();
 
     const getAnimalDetails = (id) => {
@@ -21,10 +17,8 @@ export default function AnimalDetails({ loggedInUser }) {
     }
 
     const handleAdopt = () => {
-        // Check if the animal has not been adopted already
         if (!hasAdopted) {
             createAdoption(animalId, loggedInUser.id);
-            // Set the state to indicate that the animal has been adopted
             updateAnimalAvailability(animalId);
             setHasAdopted(true);
         }
@@ -45,19 +39,11 @@ export default function AnimalDetails({ loggedInUser }) {
         navigate(`/`)
     }
 
-
-
-    useEffect(() => {
-        console.log("user", loggedInUser)
-    }, [loggedInUser])
-
     useEffect(() => {
         if (animalId) {
             getAnimalDetails(animalId);
         }
     }, [animalId])
-
-
 
     if (!animal) {
         return (
@@ -70,34 +56,38 @@ export default function AnimalDetails({ loggedInUser }) {
 
     const breedsArray = animal.animalBreeds.map(animalBreed => animalBreed.breed.name);
     const breedsString = breedsArray.join(", ");
-    console.log("animal", animal)
-
+    console.log(loggedInUser)
     return (
         <>
-            <h2>Animal details</h2>
-            <div>
-                <img className="animal-picture" src={animal.urlPic} alt={animal.name} />
-                <p>Name: {animal.name}</p>
-                <p>Breed/s: {breedsString}</p>
-                <p>Age: {animal.age} months</p>
-                <p>Date Added: {new Date(animal.dateAdded).toLocaleDateString('en-CA')}</p>
-                <p>Currently being Fostered: {animal.fostered ? 'Yes' : 'No'}</p>
-                <p>Adopted: {animal.available ? 'No' : 'Yes'}</p>
-                {isUser && (
-                    <div>
-                        <button onClick={handleAdopt} disabled={hasAdopted}>Adopt</button>
-                        <button onClick={handleFoster}>Foster</button>
-                        <button onClick={handleDeleteFoster}>Return Foster</button>
-                    </div>
-                )}
-                {isEmployee && (
-                    <div>
-                        <Link to={`/editAnimal/${animal.id}`}>
-                            <button>Edit</button>
-                        </Link>
-                        <button onClick={handleDelete}>Delete</button>
-                    </div>
-                )}
+            <h2 className="animal-details-title">Animal details</h2>
+            <div className="animal-detail-container">
+                <div className="animal-item">
+                    <img className="animal-detail-picture" src={animal.urlPic} alt={animal.name} />
+                </div>
+                <div className="animal-item animal-details">
+                    <p>Name: {animal.name}</p>
+                    <p>Breed/s: {breedsString}</p>
+                    <p>Age: {animal.age} months</p>
+                    <p>Date Added: {new Date(animal.dateAdded).toLocaleDateString('en-CA')}</p>
+                    <p>Currently being Fostered: {animal.fostered ? 'Yes' : 'No'}</p>
+                    <p>Adopted: {animal.available ? 'No' : 'Yes'}</p>
+                    
+                    {!loggedInUser?.roles?.includes("Employee") && (
+                        <div>
+                            <button onClick={handleAdopt} disabled={hasAdopted}>Adopt</button>
+                            <button onClick={handleFoster}>Foster</button>
+                            <button onClick={handleDeleteFoster}>Return Foster</button>
+                        </div>
+                    )}
+                    {loggedInUser?.roles?.includes("Employee") && (
+                        <div>
+                            <Link to={`/editAnimal/${animal.id}`}>
+                                <button>Edit</button>
+                            </Link>
+                            <button onClick={handleDelete}>Delete</button>
+                        </div>
+                    )}
+                </div>
             </div>
         </>
     );

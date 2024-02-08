@@ -14,6 +14,7 @@ public class UserProfile
     public string Address { get; set; }
     [Required]
     public string UserName { get; set; }
+    
     public bool? Employee { get; set; }
     [Required]
     public string? IdentityUserId { get; set; }

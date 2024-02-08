@@ -10,3 +10,48 @@
 #fostered.clicked {
     background-color: red;
 }
+
+.animal-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.animal-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.animal-item {
+    margin: 10px;
+    text-align: center;
+}
+
+.animal-picture {
+    width: 300px; 
+    height: 300px; 
+    object-fit: cover;
+    border: 3px solid #ccc; 
+    border-radius: 5px; 
+}
+
+.animal-detail-picture {
+    width: 600px; 
+    height: 600px; 
+    object-fit: cover;
+    border: 3px solid #ccc; 
+    border-radius: 5px; 
+}
+
+.animal-details {
+    background-color: tan;
+    padding: 70px;
+    border-radius: 5px;
+}
+
+
+.animal-details-title {
+    text-align: center;
+}
+
