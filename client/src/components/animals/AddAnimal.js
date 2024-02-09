@@ -101,8 +101,10 @@ export default function AddAnimal() {
     console.log(breeds)
 
     return (
-        <div>
+        <div className="container">
+            <div className="add-animal">
             <h2>Add Animal Form</h2>
+            <hr />
             <br />
             <form onSubmit={handleSubmit}>
                 <label>
@@ -184,8 +186,9 @@ export default function AddAnimal() {
                 </label>
                 <br />
                 <br />
-                <button type="submit">Submit</button>
+                <button id="submit-animal" type="submit">Submit</button>
             </form>
+        </div>
         </div>
     );
 }

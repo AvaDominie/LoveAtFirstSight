@@ -1,0 +1,10 @@
+
+
+.navbar-items {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center the items horizontally */
+}
+
+.navbar-link {
+    font-size: 20px; /* Adjust the font size as needed */
+}

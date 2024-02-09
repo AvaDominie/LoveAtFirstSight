@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAnimalById, updateAnimal } from "../../managers/AnimalManager";
 import { getAllBreeds } from "../../managers/BreedManager";
+import "./Animal.css"
 
 export default function EditAnimal() {
     const { animalId } = useParams();
@@ -57,7 +58,7 @@ export default function EditAnimal() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-    
+
 
         var isMale = gender;
         if (isMale === "male") {
@@ -73,8 +74,8 @@ export default function EditAnimal() {
         }
 
         var animalBreeds = selectedBreeds.map((animalBreed) => {
-            return {"breedId": animalBreed};
-        } )
+            return { "breedId": animalBreed };
+        })
 
         const updatedAnimal = {
             isDog,
@@ -106,94 +107,97 @@ export default function EditAnimal() {
     console.log("animal", animal)
     return (
         <div className="container">
-            <h2>Edit Animal Form</h2>
-            {animal ? (
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Animal Type:
-                        <div>
-                            <input
-                                type="radio"
-                                value="dog"
-                                checked={animalType === "dog"}
-                                onChange={handleAnimalTypeChange}
-                            />
-                            Dog
-                            <input
-                                type="radio"
-                                value="cat"
-                                checked={animalType === "cat"}
-                                onChange={handleAnimalTypeChange}
-                            />
-                            Cat
-                        </div>
-                    </label>
-                    <br />
-                    <br />
-                    <label>
-                        Gender:
-                        <div>
-                            <input
-                                type="radio"
-                                value="male"
-                                checked={gender === "male"}
-                                onChange={handleGenderChange}
-                            />
-                            Male
-                            <input
-                                type="radio"
-                                value="female"
-                                checked={gender === "female"}
-                                onChange={handleGenderChange}
-                            />
-                            Female
-                        </div>
-                    </label>
-                    <br />
-                    <br />
-                    <label>
-                        Name:
-                        <input type="text" value={name} onChange={handleNameChange} />
-                    </label>
-                    <br />
-                    <br />
-                    <label>
-                        Age:
-                        <input type="text" value={age} onChange={handleAgeChange} />
-                    </label>
-                    <br />
-                    <br />
-                    <label>
-                        URL Picture:
-                        <input type="text" value={urlPic} onChange={handleUrlPicChange} />
-                    </label>
-                    <br />
-                    <br />
-                    <label>
-                        Animal Breeds:
-                        <div>
-                            {breeds ? (
-                                <select onChange={handleBreedChange} multiple>
-                                    {breeds.map((breed) => (
-                                        <option key={breed.id} value={breed.id}>
-                                            {breed.name}
-                                        </option>
-                                    ))}
-                                </select>
-                            ) : (
-                                <p>Loading breeds...</p>
-                            )}
+            <div className="animal-edit-details">
+                <h2>Edit Animal Form</h2>
+                <hr />
+                {animal ? (
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            Animal Type:
+                            <div>
+                                <input
+                                    type="radio"
+                                    value="dog"
+                                    checked={animalType === "dog"}
+                                    onChange={handleAnimalTypeChange}
+                                />
+                                Dog
+                                <input
+                                    type="radio"
+                                    value="cat"
+                                    checked={animalType === "cat"}
+                                    onChange={handleAnimalTypeChange}
+                                />
+                                Cat
+                            </div>
+                        </label>
+                        <br />
+                        <br />
+                        <label>
+                            Gender:
+                            <div>
+                                <input
+                                    type="radio"
+                                    value="male"
+                                    checked={gender === "male"}
+                                    onChange={handleGenderChange}
+                                />
+                                Male
+                                <input
+                                    type="radio"
+                                    value="female"
+                                    checked={gender === "female"}
+                                    onChange={handleGenderChange}
+                                />
+                                Female
+                            </div>
+                        </label>
+                        <br />
+                        <br />
+                        <label>
+                            Name:
+                            <input type="text" value={name} onChange={handleNameChange} />
+                        </label>
+                        <br />
+                        <br />
+                        <label>
+                            Age:
+                            <input type="text" value={age} onChange={handleAgeChange} />
+                        </label>
+                        <br />
+                        <br />
+                        <label>
+                            URL Picture:
+                            <input type="text" value={urlPic} onChange={handleUrlPicChange} />
+                        </label>
+                        <br />
+                        <br />
+                        <label>
+                            Animal Breeds:
+                            <div>
+                                {breeds ? (
+                                    <select onChange={handleBreedChange} multiple>
+                                        {breeds.map((breed) => (
+                                            <option key={breed.id} value={breed.id} className={selectedBreeds.includes(breed.id) ? "selected-breed" : ""}>
+                                                {breed.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                ) : (
+                                    <p>Loading breeds...</p>
+                                )}
 
-                        </div>
-                    </label>
-                    <br />
-                    <br />
-                    <button type="submit">Update</button>
-                </form>
-            ) : (
-                <p>Loading animal details...</p>
-            )}
+                            </div>
+                        </label>
+                        <br />
+                        <br />
+                        <button id="submit-animal" type="submit">Update</button>
+                    </form>
+                ) : (
+                    <p>Loading animal details...</p>
+                )}
+            </div>
         </div>
     );
 }
-// currently doesn't add updated  animalBreeds
+

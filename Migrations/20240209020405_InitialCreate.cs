@@ -199,7 +199,7 @@ namespace LoveAtFirstSight.Migrations
                     Email = table.Column<string>(type: "text", nullable: false),
                     Address = table.Column<string>(type: "text", nullable: false),
                     UserName = table.Column<string>(type: "text", nullable: false),
-                    Employee = table.Column<bool>(type: "boolean", nullable: false),
+                    Employee = table.Column<bool>(type: "boolean", nullable: true),
                     IdentityUserId = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -318,10 +318,11 @@ namespace LoveAtFirstSight.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "2013iqkp-0829-4ac5-a3ed-180f5e916a5f", 0, "78b357b1-6aa1-4fb9-aa35-26fd79547ae0", "mattspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEL0fdwPRKRq/T9OG+w0JUPkRJQuKlX43km8sgFrJd2Fv0J+oUSaqN2UULEp5Oo9+Hw==", null, false, "a55b7ef9-c657-47c2-bf4c-b89a2ea32ff6", false, "MattS" },
-                    { "5678efgh-0829-4ac5-a3ed-180f5e916a5f", 0, "4b0a97c8-ffca-4f99-8a37-ac7797e3e192", "rachelmdominie@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAED5PI+MN0RK6BkP6qQ5nRII79xNq7FBoG+m29xAgyfBb3exKqJCiyVF0bjppl56LwA==", null, false, "87fe7821-127e-4095-8a82-d6b0b0c2170e", false, "RachelD" },
-                    { "9012ijkl-0829-4ac5-a3ed-180f5e916a5f", 0, "baf9ef38-26fa-4648-bf0d-5c20087e753e", "elizabethspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEM0QH6BfZ8NZlrY9QWOv0K+c3+us1Z86k6pivu3yB4p6rCs43VXeB01iLqOk2Edv/Q==", null, false, "bae1e55a-4505-475f-a277-05f310f5c963", false, "ElizabethS" },
-                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "b29b3c6a-ee3c-42b0-b8b7-aca73ec7f6bb", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAEAMRg/cLTPTwKdCZc9b5p3fft97v8LI0zLw7ukAYcO4c+PIbQjrwh+8vYXNuLlsJTA==", null, false, "8dfda1d5-2544-40d8-b51e-3a49c2bcb4e3", false, "Administrator" }
+                    { "2013iqkp-0829-4ac5-a3ed-180f5e916a5f", 0, "236a6d44-f7b3-4f62-a340-e02868bd70c5", "mattspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHZ+C0R85aoUvIXzmBVeytIihADH5WNijOcAsA9aaMbaX73ScllT5d0+Js+Ott4taA==", null, false, "904649dc-bdb2-4051-893d-0913bc285000", false, "MattS" },
+                    { "3545giyw-0829-4ac5-a3ed-180f5e916a5f", 0, "eb4cb0e2-75c1-42d1-909d-cac5cdbb6e8f", "avadominie@gmail.com", false, false, null, null, null, "AQAAAAIAAYagAAAAENtGv+9IJ173vL4Z4L4cb11aTYfKw4OoskoqnvqU14N2JT8pcmcnpjlTJ4Hthv0S3g==", null, false, "5b56ea8e-d40d-4099-9fd7-e8657316b1d6", false, "AvaD" },
+                    { "5678efgh-0829-4ac5-a3ed-180f5e916a5f", 0, "9daf10ad-e153-4f2f-81a8-d73ad13a130b", "rachelmdominie@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEHW0Aaj1hjK5z0op8Q6efYgNBpTvcCA4wYR9MIFK7+yXNmSTOlbArR+634kg/QDfaQ==", null, false, "45a54323-ec25-49ea-b560-83ac7eb38415", false, "RachelD" },
+                    { "9012ijkl-0829-4ac5-a3ed-180f5e916a5f", 0, "ddd3eef6-56f6-43c4-a7d2-cb00dc43c43f", "elizabethspencer@example.com", false, false, null, null, null, "AQAAAAIAAYagAAAAEGFD9vwouobe7iUYbAtLf/aurA8/qIS8InlYzS2y6xj8tKOiMRxUat8zVblnAi+rcg==", null, false, "d43da0f2-60b7-45d6-9755-64c80e0f7396", false, "ElizabethS" },
+                    { "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", 0, "c0f7e6bb-31b1-4848-98ea-c0e118c30682", "admina@strator.comx", false, false, null, null, null, "AQAAAAIAAYagAAAAECigJE3RHDjH/viXxbJEV1qvJtwt23cWJg4pgwYLIEbgQ6XgeugYyLt8fsoWJSugNQ==", null, false, "0fdd0ec5-fcca-4ebf-9587-f37e8d394a55", false, "Administrator" }
                 });
 
             migrationBuilder.InsertData(
@@ -334,22 +335,22 @@ namespace LoveAtFirstSight.Migrations
                     { 3, true, "Golden Retriever" },
                     { 4, true, "Bulldog" },
                     { 5, true, "Beagle" },
-                    { 6, true, "Rottweiler" },
-                    { 7, true, "Shih Tzu" },
-                    { 8, true, "Yorkshire Terrier" },
+                    { 6, true, "Pomeranian" },
+                    { 7, true, "Pit Bull" },
+                    { 8, true, "Chihuahua" },
                     { 9, true, "Boxer" },
-                    { 10, true, "Border Collie" },
+                    { 10, true, "Mutt" },
                     { 11, true, "Siberian Husky" },
-                    { 12, false, "Persian Cat" },
+                    { 12, true, "German Shepherd" },
                     { 13, false, "Siamese Cat" },
                     { 14, false, "Maine Coon" },
                     { 15, false, "Abyssinian Cat" },
                     { 16, false, "Bengal Cat" },
-                    { 17, false, "Bombay Cat" },
+                    { 17, false, "Calico Cat" },
                     { 18, false, "Cornish Rex Cat" },
                     { 19, false, "Egyptian Mau Cat" },
                     { 20, false, "Exotic Shorthair Cat" },
-                    { 21, false, "Havana Brown Cat" },
+                    { 21, false, "Moggy" },
                     { 22, false, "Scottish Fold Cat" },
                     { 23, false, "Sphynx Cat" }
                 });
@@ -378,6 +379,7 @@ namespace LoveAtFirstSight.Migrations
                 values: new object[,]
                 {
                     { "abcdefgh-0829-4ac5-a3ed-180f5e916a5f", "2013iqkp-0829-4ac5-a3ed-180f5e916a5f" },
+                    { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "3545giyw-0829-4ac5-a3ed-180f5e916a5f" },
                     { "abcdefgh-0829-4ac5-a3ed-180f5e916a5f", "5678efgh-0829-4ac5-a3ed-180f5e916a5f" },
                     { "abcdefgh-0829-4ac5-a3ed-180f5e916a5f", "9012ijkl-0829-4ac5-a3ed-180f5e916a5f" },
                     { "c3aaeb97-d2ba-4a53-a521-4eea61e59b35", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f" }
@@ -391,7 +393,8 @@ namespace LoveAtFirstSight.Migrations
                     { 1, "101 Main Street", "admina@strator.comx", true, "Admina Strator", "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f", "Administrator" },
                     { 2, "5165 Crosswood dr.", "rachelmdominie@example.com", false, "Rachel Dominie", "5678efgh-0829-4ac5-a3ed-180f5e916a5f", "RachelD" },
                     { 3, "456 Main Street", "elizabethspencer@example.com", false, "Elizabeth Spencer", "9012ijkl-0829-4ac5-a3ed-180f5e916a5f", "ElizabethS" },
-                    { 4, "456 Main Street", "mattspencer@example.com", false, "Matt Spencer", "2013iqkp-0829-4ac5-a3ed-180f5e916a5f", "MattS" }
+                    { 4, "456 Main Street", "mattspencer@example.com", false, "Matt Spencer", "2013iqkp-0829-4ac5-a3ed-180f5e916a5f", "MattS" },
+                    { 15, "3545 CrossWood Dr.", "avadominie@gmail.com", true, "Ava Dominie", "3545giyw-0829-4ac5-a3ed-180f5e916a5f", "AvaD" }
                 });
 
             migrationBuilder.InsertData(

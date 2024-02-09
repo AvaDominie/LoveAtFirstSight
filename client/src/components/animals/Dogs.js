@@ -37,11 +37,12 @@ export default function Dogs({ loggedInUser }) {
                 <div className="">
                     {isEmployee && (
                         <Link to={`/addAnimal`}>
-                            <button>Add Dog</button>
+                            <button id="add-animal">Add Dog</button>
                         </Link>
+
                     )}
                     <DogList />
-                    
+
                     {!isAtTop && (
                         <div className="back-to-top" onClick={scrollToTop}>
                             <span>&#8593;</span>
