@@ -62,7 +62,6 @@
 }
 
 .container {
-
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -72,7 +71,8 @@
 }
 
 .map {
-    justify-content: center;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center the map horizontally */
     border: 3px solid #ccc;
     border-width: 5px;
     border-radius: 5px;

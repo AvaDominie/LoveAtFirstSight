@@ -24,24 +24,27 @@ export default function UserProfileDetails({ loggedInUser }) {
                 <>
                 <div className="profile-details">
                 <h2>Profile Details</h2>
-                <br />
+                <hr />
                 <br />
                     <p>Full Name: {user.fullName}</p>
                     <p>Username: {user.userName}</p>
                     <p>Email: {user.email}</p>
                     <p>Address: {user.address}</p>
                     </div>
+                    <br />
+                    <br />
                     {!loggedInUser.roles.includes("Employee") && (
                         <>
                             <h3>Adopted Animals:</h3>
+                            <hr />
                             {user.adoptions && user.adoptions.length > 0 ? (
                                 <ul>
                                     {user.adoptions.map((adoption) => (
                                         !adoption.animal.available && (
                                             <li key={adoption.id}>
-                                                <p>Name: {adoption.animal.name}</p>
+                                                <p>{adoption.animal.name}</p>
                                                 <Link to={`/animalDetails/${adoption.animal.id}`} >
-                                                    <p><img src={adoption.animal.urlPic} alt={adoption.animal.name} /></p>
+                                                    <p><img className="animal-detail-picture" src={adoption.animal.urlPic} alt={adoption.animal.name} /></p>
                                                 </Link>
                                             </li>
                                         )
@@ -50,8 +53,11 @@ export default function UserProfileDetails({ loggedInUser }) {
                             ) : (
                                 <p>No adopted animals.</p>
                             )}
-                            
+                            <br />
+                            <br />
+                            <br />
                             <h3>Fostered Animals:</h3>
+                            <hr />
                             {user.adoptions && user.adoptions.length > 0 ? (
                                 <ul>
                                     {user.adoptions.map((adoption) => (
@@ -60,9 +66,9 @@ export default function UserProfileDetails({ loggedInUser }) {
                                             // Add the animal ID to the array
                                             uniqueAnimalIds.push(adoption.animal.id),
                                             <li key={adoption.id}>
-                                                <p>Name: {adoption.animal.name}</p>
+                                                <p>{adoption.animal.name}</p>
                                                 <Link to={`/animalDetails/${adoption.animal.id}`}>
-                                                    <p><img src={adoption.animal.urlPic} alt={adoption.animal.name} /></p>
+                                                    <p><img className="animal-detail-picture" src={adoption.animal.urlPic} alt={adoption.animal.name} /></p>
                                                 </Link>
                                             </li>
                                         )
@@ -80,7 +86,7 @@ export default function UserProfileDetails({ loggedInUser }) {
             
             
                 <Link to={`/editUserProfile/${getUserId}`} >
-                    <button>Edit</button>
+                    <button id="edit-profile">Edit</button>
                 </Link>
             
 

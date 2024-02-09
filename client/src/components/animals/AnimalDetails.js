@@ -59,37 +59,40 @@ export default function AnimalDetails({ loggedInUser }) {
     console.log(loggedInUser)
     return (
         <>
-        <div className="animal">
-            <h2 className="animal-details-title">Animal details</h2>
-            <div className="animal-detail-container">
-                <div className="animal-item">
-                    <img className="animal-detail-picture" src={animal.urlPic} alt={animal.name} />
+            <div className="animal">
+                <h2 className="animal-details-title">Animal details</h2>
+                <hr />
+                <div className="animal-detail-container">
+                    <div className="animal-item">
+                        <img className="animal-detail-picture" src={animal.urlPic} alt={animal.name} />
+                    </div>
+                    <div className="animal-item animal-details">
+                        <p>Name: {animal.name}</p>
+                        <p>Breed/s: {breedsString}</p>
+                        <p>Age: {animal.age} months</p>
+                        <p>Date Added: {new Date(animal.dateAdded).toLocaleDateString('en-CA')}</p>
+                        <p>Currently being Fostered: {animal.fostered ? 'Yes' : 'No'}</p>
+                        <p>Adopted: {animal.available ? 'No' : 'Yes'}</p>
+
+                        {!loggedInUser?.roles?.includes("Employee") && (
+                            <div>
+                                <button id="adoption" onClick={handleAdopt} disabled={hasAdopted} style={{ marginRight: '10px' }}>Adopt</button>
+                                <button id="foster" onClick={handleFoster} style={{ marginRight: '10px' }}>Foster</button>
+                                <div style={{ marginTop: '20px' }}>
+                                    <button id="return-foster" onClick={handleDeleteFoster} style={{ marginRight: '10px' }}>Return Foster</button>
+                                </div>
+                            </div>
+                        )}
+                        {loggedInUser?.roles?.includes("Employee") && (
+                            <div>
+                                <Link to={`/editAnimal/${animal.id}`}>
+                                    <button id="edit-animal">Edit</button>
+                                </Link>
+                                <button id="delete-animal" onClick={handleDelete}>Delete</button>
+                            </div>
+                        )}
+                    </div>
                 </div>
-                <div className="animal-item animal-details">
-                    <p>Name: {animal.name}</p>
-                    <p>Breed/s: {breedsString}</p>
-                    <p>Age: {animal.age} months</p>
-                    <p>Date Added: {new Date(animal.dateAdded).toLocaleDateString('en-CA')}</p>
-                    <p>Currently being Fostered: {animal.fostered ? 'Yes' : 'No'}</p>
-                    <p>Adopted: {animal.available ? 'No' : 'Yes'}</p>
-                    
-                    {!loggedInUser?.roles?.includes("Employee") && (
-                        <div>
-                            <button onClick={handleAdopt} disabled={hasAdopted}>Adopt</button>
-                            <button onClick={handleFoster}>Foster</button>
-                            <button onClick={handleDeleteFoster}>Return Foster</button>
-                        </div>
-                    )}
-                    {loggedInUser?.roles?.includes("Employee") && (
-                        <div>
-                            <Link to={`/editAnimal/${animal.id}`}>
-                                <button>Edit</button>
-                            </Link>
-                            <button onClick={handleDelete}>Delete</button>
-                        </div>
-                    )}
-                </div>
-            </div>
             </div>
         </>
     );

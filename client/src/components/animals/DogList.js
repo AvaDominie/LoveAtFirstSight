@@ -58,11 +58,14 @@ export default function DogList() {
 
     return (
         <>
-            <h2>Available Dogs</h2>
+            <h2 className="animal-details-title">Available Dogs</h2>
+            <hr />
             <div>
                 <button id="fostered" onClick={handleButtonClick}>
                     Fostered
                 </button>
+                <br />
+                <br />
                 <select onChange={(e) => setSelectedBreed(e.target.value)}>
                     <option value="">All breeds</option>
                     {breeds.map((breed) => (

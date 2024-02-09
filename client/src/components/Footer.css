@@ -8,23 +8,23 @@
 }
 
 .Email {
-    width: 65px;
-    height: 65px;
+    width: 45px;
+    height: 45px;
     margin: 0 10px; /* Add margin to create spacing */
     transition: filter 0.3s; /* Smooth transition effect */
     
 }
 
 .Ig {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 44px;
     margin: 0 10px; /* Add margin to create spacing */
     transition: filter 0.3s; /* Smooth transition effect */
 }
 
 .Fb {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     margin: 0 10px; /* Add margin to create spacing */
     transition: filter 0.3s; /* Smooth transition effect */
 }

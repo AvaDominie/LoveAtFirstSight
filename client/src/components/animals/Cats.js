@@ -37,7 +37,7 @@ export default function Cats({ loggedInUser }) {
                 <div className="">
                     {isEmployee && (
                         <Link to={`/addAnimal`}>
-                            <button>Add Cat</button>
+                            <button id="add-animal">Add Cat</button>
                         </Link>
                     )}
                     <CatList />

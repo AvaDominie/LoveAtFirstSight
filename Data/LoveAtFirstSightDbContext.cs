@@ -58,7 +58,7 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             Id = "9012ijkl-0829-4ac5-a3ed-180f5e916a5f",
             UserName = "ElizabethS",
             Email = "elizabethspencer@example.com",
-            PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "password")
+            PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "Bigmop123")
         },
         new IdentityUser
         {
@@ -66,6 +66,13 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             UserName = "MattS",
             Email = "mattspencer@example.com",
             PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "password")
+        },
+        new IdentityUser
+        {
+            Id = "3545giyw-0829-4ac5-a3ed-180f5e916a5f",
+            UserName = "AvaD",
+            Email = "avadominie@gmail.com",
+            PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "Bigmop123")
         }
         );
 
@@ -88,6 +95,11 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
         {
             RoleId = "abcdefgh-0829-4ac5-a3ed-180f5e916a5f",
             UserId = "2013iqkp-0829-4ac5-a3ed-180f5e916a5f"
+        },
+        new IdentityUserRole<string>
+        {
+            RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
+            UserId = "3545giyw-0829-4ac5-a3ed-180f5e916a5f"
         });
 
         modelBuilder.Entity<UserProfile>().HasData(new UserProfile
@@ -130,7 +142,16 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
             UserName = "MattS",
             Employee = false,
             IdentityUserId = "2013iqkp-0829-4ac5-a3ed-180f5e916a5f"
-
+        },
+        new UserProfile
+        {
+            Id = 15,
+            FullName = "Ava Dominie",
+            Email = "avadominie@gmail.com",
+            Address = "3545 CrossWood Dr.",
+            UserName = "AvaD",
+            Employee = true,
+            IdentityUserId = "3545giyw-0829-4ac5-a3ed-180f5e916a5f"
         }
         );
 
@@ -529,19 +550,19 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
         new Breed
         {
             Id = 6,
-            Name = "Rottweiler",
+            Name = "Pomeranian",
             IsDog = true
         },
         new Breed
         {
             Id = 7,
-            Name = "Shih Tzu",
+            Name = "Pit Bull",
             IsDog = true
         },
         new Breed
         {
             Id = 8,
-            Name = "Yorkshire Terrier",
+            Name = "Chihuahua",
             IsDog = true
         },
         new Breed
@@ -553,7 +574,7 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
         new Breed
         {
             Id = 10,
-            Name = "Border Collie",
+            Name = "Mutt",
             IsDog = true
         },
         new Breed
@@ -565,8 +586,8 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
         new Breed
         {
             Id = 12,
-            Name = "Persian Cat",
-            IsDog = false
+            Name = "German Shepherd",
+            IsDog = true
         },
         new Breed
         {
@@ -595,7 +616,7 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
         new Breed
         {
             Id = 17,
-            Name = "Bombay Cat",
+            Name = "Calico Cat",
             IsDog = false
         },
         new Breed
@@ -619,7 +640,7 @@ public class LoveAtFirstSightDbContext : IdentityDbContext<IdentityUser>
         new Breed
         {
             Id = 21,
-            Name = "Havana Brown Cat",
+            Name = "Moggy",
             IsDog = false
         },
         new Breed

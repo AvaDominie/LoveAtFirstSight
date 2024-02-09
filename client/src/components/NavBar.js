@@ -11,6 +11,7 @@ import {
     NavbarToggler,
 } from "reactstrap";
 import { logout } from "../managers/authManager";
+import "./NavBar.css"
 
 
 export default function NavBar({ loggedInUser, setLoggedInUser }) {
