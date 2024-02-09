@@ -29,7 +29,7 @@ function App() {
         loggedInUser={loggedInUser}
         setLoggedInUser={setLoggedInUser}
       />
-      <Footer loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+      {loggedInUser && <Footer loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />}
     </>
   );
 }
