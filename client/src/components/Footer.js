@@ -7,11 +7,13 @@ import "./Footer.css"
 
 
 
+
 export default function Footer({ loggedInUser, setLoggedInUser }) {
     return (
         <div className="footer">
             {loggedInUser ? (
                 <footer>
+                    
                     <div className="logos">
                     <br />
                     <a href="mailto:LAFSpet@gmail.com">
