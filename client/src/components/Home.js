@@ -25,7 +25,6 @@ export default function Home() {
             <h2 className="welcome">Welcome to Love At First Sight Adoption Center!</h2>
             <hr />
             <br />
-
             <div className="slider">
                 <img src={images[currentImageIndex]} style={{ width: "100%" }} alt={`Slide ${currentImageIndex + 1}`} />
                 <button className="prev" onClick={prevSlide}>&#10094;</button>

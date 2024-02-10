@@ -12,6 +12,7 @@ export default function DogList() {
     const [breeds, setBreeds] = useState([]);
     const [selectedBreed, setSelectedBreed] = useState("");
 
+    console.log("all dogs", dogs)
     const getAllDogs = () => {
         getDogs().then(setDogs);
     };
